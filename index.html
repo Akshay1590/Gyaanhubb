@@ -3,1313 +3,633 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GyaanHubb — Japan & Culture</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<title>NihonLifestyle - Japan Culture Blog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;500;700&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-
-/* ══════════════════════════════════════════
-   OPENING PAGE VARIABLES & RESET
-══════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  /* opening */
-  --pink-deep:#c8697a;--pink-mid:#e8a0b0;--pink-light:#f7d4dc;--pink-pale:#fdf0f3;
-  --sky-top:#f0e6f6;--sky-bottom:#fce8ee;--trunk:#5c3d2e;--branch:#7a5040;
-  --ground-col:#e8d5c4;--mist:rgba(255,240,245,0.55);--text-dark:#3d1f2a;--text-mid:#8b4f60;
-  /* main site */
-  --sakura:#f9c8d4;--sakura2:#f4a7b9;--sakura3:#e8728a;
-  --cream:#fdf8f2;--parchment:#f5ede0;
-  --ink:#1a1208;--ink2:#2d1f0e;
-  --moss:#4a6741;--gold:#c9a84c;--gold2:#e8c97a;
-  --muted:#8c7a6b;--red:#c0392b;--white:#fff;
-  --shadow:rgba(26,18,8,0.12);
+  --cream:#fff8f2;
+  --paper:#f4eadc;
+  --ink:#17100b;
+  --ink-soft:#38271d;
+  --rose:#e8728a;
+  --rose-soft:#f9c8d4;
+  --rose-pale:#fff0f4;
+  --gold:#c9a84c;
+  --moss:#4f6f48;
+  --mist:rgba(255,246,248,.72);
+  --white:#fff;
+  --shadow:rgba(23,16,11,.14);
 }
-html{scroll-behavior:smooth;}
-body{background:var(--cream);color:var(--ink);font-family:'Cormorant Garamond',serif;overflow-x:hidden;cursor:none;}
-
-/* ══════════════════════════════════════════
-   SHURIKEN CURSOR
-══════════════════════════════════════════ */
-/* Hide native cursor everywhere */
-*{cursor:none!important;}
-
-#shuriken-cursor{
-  position:fixed;
-  width:36px;height:36px;
-  pointer-events:none;
-  z-index:99999;
-  transform:translate(-50%,-50%);
-  will-change:transform;
+html{scroll-behavior:smooth}
+body{
+  min-height:100vh;
+  overflow-x:hidden;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:"Cormorant Garamond",serif;
+  cursor:none;
 }
-#shuriken-cursor svg{
-  width:100%;height:100%;
-  filter:drop-shadow(0 0 6px rgba(30,10,5,0.55)) drop-shadow(0 2px 10px rgba(180,60,80,0.35));
-  transition:filter 0.15s;
-}
-#shuriken-cursor.clicked svg{
-  filter:drop-shadow(0 0 14px rgba(232,114,138,0.9)) drop-shadow(0 0 28px rgba(232,114,138,0.5));
-}
-
-/* Trail dots */
-.cursor-trail{
-  position:fixed;
-  pointer-events:none;
-  z-index:99990;
-  border-radius:50%;
-  transform:translate(-50%,-50%);
-  background:radial-gradient(circle,rgba(200,105,122,0.55),transparent);
-  will-change:transform,opacity;
-}
-
-/* Subtle aura ring that follows cursor */
+*{cursor:none!important}
+a{color:inherit}
+button,input{font:inherit}
+#cursor-aura,#shuriken-cursor,.cursor-trail{position:fixed;pointer-events:none;z-index:9999;left:0;top:0}
 #cursor-aura{
-  position:fixed;
-  width:52px;height:52px;
-  pointer-events:none;
-  z-index:99988;
+  width:58px;height:58px;border:1px solid rgba(232,114,138,.28);border-radius:50%;
   transform:translate(-50%,-50%);
-  border-radius:50%;
-  border:1px solid rgba(232,114,138,0.25);
-  box-shadow:inset 0 0 12px rgba(232,114,138,0.06);
-  will-change:transform;
-  transition:width 0.2s,height 0.2s,border-color 0.2s;
+  box-shadow:0 0 24px rgba(232,114,138,.12),inset 0 0 18px rgba(232,114,138,.08);
+  transition:width .2s,height .2s,border-color .2s,background .2s;
 }
-#cursor-aura.hover{
-  width:64px;height:64px;
-  border-color:rgba(232,114,138,0.5);
-}
+#cursor-aura.hover{width:76px;height:76px;border-color:rgba(232,114,138,.58);background:rgba(249,200,212,.08)}
+#shuriken-cursor{width:38px;height:38px;transform:translate(-50%,-50%);will-change:transform}
+#shuriken-cursor svg{width:100%;height:100%;filter:drop-shadow(0 0 7px rgba(23,16,11,.55)) drop-shadow(0 0 16px rgba(232,114,138,.28))}
+#shuriken-cursor.clicked svg{filter:drop-shadow(0 0 13px rgba(232,114,138,.9)) drop-shadow(0 0 28px rgba(232,114,138,.55))}
+.cursor-trail{border-radius:50%;background:radial-gradient(circle,rgba(232,114,138,.62),rgba(232,114,138,0));transform:translate(-50%,-50%)}
 
-/* ══════════════════════════════════════════
-   OPENING PAGE
-══════════════════════════════════════════ */
 #opening-page{
-  position:fixed;inset:0;z-index:2000;
-  font-family:'Cormorant Garamond','Noto Serif JP',serif;
-  overflow:hidden;
+  position:fixed;inset:0;z-index:2000;overflow:hidden;
+  background:linear-gradient(180deg,#e9e2f6 0%,#fde5ed 54%,#fff7f1 100%);
+  font-family:"Cormorant Garamond","Noto Serif JP",serif;
 }
-#opening-page.fade-out{animation:openingFadeOut 1.4s cubic-bezier(0.76,0,0.24,1) forwards;}
-@keyframes openingFadeOut{
-  0%{opacity:1;transform:scale(1);}
-  40%{opacity:1;transform:scale(1.04);}
-  100%{opacity:0;transform:scale(1.08);pointer-events:none;}
-}
-
-/* Sky */
-.op-sky{
-  position:absolute;inset:0;
-  background:linear-gradient(180deg,#e8dff5 0%,#f5dde8 35%,#fce8ee 65%,#fdf4f0 100%);
-  z-index:0;
-}
-/* Sun glow */
+#opening-page.fade-out{animation:openingFade 1.2s cubic-bezier(.76,0,.24,1) forwards}
+@keyframes openingFade{to{opacity:0;transform:scale(1.06);visibility:hidden}}
 .op-sun{
-  position:absolute;top:-60px;left:50%;transform:translateX(-50%);
-  width:340px;height:340px;border-radius:50%;
-  background:radial-gradient(circle,rgba(255,220,180,0.55) 0%,rgba(255,200,210,0.2) 50%,transparent 70%);
-  z-index:1;animation:sunPulse 6s ease-in-out infinite;
+  position:absolute;top:-80px;left:50%;width:360px;height:360px;border-radius:50%;
+  transform:translateX(-50%);
+  background:radial-gradient(circle,rgba(255,226,177,.72),rgba(255,205,219,.34) 48%,transparent 72%);
+  animation:sunPulse 7s ease-in-out infinite;
 }
-@keyframes sunPulse{
-  0%,100%{transform:translateX(-50%) scale(1);opacity:0.7;}
-  50%{transform:translateX(-50%) scale(1.12);opacity:1;}
+@keyframes sunPulse{50%{transform:translateX(-50%) scale(1.12);opacity:.88}}
+.op-mist,.op-mist::before,.op-mist::after{
+  position:absolute;left:-18%;right:-18%;height:110px;border-radius:50%;
+  background:linear-gradient(90deg,transparent,var(--mist),rgba(255,255,255,.78),var(--mist),transparent);
+  filter:blur(18px);
 }
-/* Mist */
-.op-mist-wrap{position:absolute;inset:0;z-index:2;pointer-events:none;}
-.op-mist{
-  position:absolute;left:-20%;right:-20%;height:120px;
-  background:linear-gradient(90deg,transparent 0%,var(--mist) 30%,rgba(255,245,250,0.7) 50%,var(--mist) 70%,transparent 100%);
-  border-radius:50%;filter:blur(18px);animation:mistDrift linear infinite;
-}
-.op-mist:nth-child(1){top:58%;animation-duration:28s;opacity:0.6;transform:scaleY(0.4);}
-.op-mist:nth-child(2){top:64%;animation-duration:38s;animation-delay:-12s;opacity:0.45;transform:scaleY(0.3);}
-.op-mist:nth-child(3){top:70%;animation-duration:32s;animation-delay:-8s;opacity:0.5;transform:scaleY(0.35);}
-@keyframes mistDrift{
-  0%{transform:translateX(-10%) scaleY(0.35);}
-  50%{transform:translateX(10%) scaleY(0.45);}
-  100%{transform:translateX(-10%) scaleY(0.35);}
-}
-/* Ground */
+.op-mist{bottom:22%;animation:mist 28s ease-in-out infinite}
+.op-mist::before{content:"";bottom:52px;animation:mist 38s ease-in-out infinite reverse;opacity:.68}
+.op-mist::after{content:"";bottom:-48px;animation:mist 34s ease-in-out infinite;opacity:.58}
+@keyframes mist{50%{transform:translateX(9%) scaleY(.72)}}
+#op-canvas,#ninja-canvas,#sakura-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .op-ground{
-  position:absolute;bottom:0;left:0;right:0;height:18%;
-  background:linear-gradient(180deg,#e8d5c8 0%,#d4bfaf 60%,#c8b09a 100%);
-  z-index:3;
+  position:absolute;left:0;right:0;bottom:0;height:19%;
+  background:linear-gradient(180deg,#ead5c5,#c9ad96);
 }
-.op-ground::before{content:'';position:absolute;top:-30px;left:0;right:0;height:60px;background:linear-gradient(180deg,transparent 0%,rgba(232,213,200,0.8) 100%);filter:blur(8px);}
-.op-ground::after{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#c8a080,#b89070,#d0aa88,#b88860,#c8a080);opacity:0.6;}
-/* Path */
 .op-path{
-  position:absolute;bottom:0;left:50%;transform:translateX(-50%);
-  width:180px;height:20%;
-  background:linear-gradient(180deg,#d4b896 0%,#e0c8a8 100%);
-  clip-path:polygon(20% 0%,80% 0%,100% 100%,0% 100%);
-  z-index:4;opacity:0.5;
+  position:absolute;bottom:0;left:50%;height:22%;width:min(210px,36vw);
+  transform:translateX(-50%);
+  background:linear-gradient(180deg,rgba(216,184,145,.78),rgba(232,204,170,.9));
+  clip-path:polygon(25% 0,75% 0,100% 100%,0 100%);
 }
-/* Opening canvas */
-#op-canvas{position:absolute;inset:0;z-index:5;pointer-events:none;}
-/* Trees */
-.op-trees{position:absolute;bottom:0;left:0;right:0;z-index:6;pointer-events:none;}
-/* Scene center */
+.op-trees{
+  position:absolute;left:0;right:0;bottom:10%;height:46%;pointer-events:none;opacity:.95;
+  background:
+    radial-gradient(ellipse at 12% 34%,rgba(249,200,212,.82) 0 9%,transparent 22%),
+    radial-gradient(ellipse at 22% 44%,rgba(232,160,176,.7) 0 8%,transparent 21%),
+    radial-gradient(ellipse at 82% 38%,rgba(249,200,212,.8) 0 10%,transparent 23%),
+    radial-gradient(ellipse at 73% 48%,rgba(224,129,151,.62) 0 8%,transparent 21%);
+}
+.op-trees::before,.op-trees::after{
+  content:"";position:absolute;bottom:-20%;width:15px;height:82%;
+  background:linear-gradient(#8b604c,#5d3e31);border-radius:30px;
+}
+.op-trees::before{left:12%;transform:rotate(2deg)}
+.op-trees::after{right:14%;transform:rotate(-2deg)}
+.op-brand{
+  position:absolute;top:26px;left:50%;transform:translateX(-50%);z-index:4;
+  display:flex;align-items:center;gap:12px;color:#8b4f60;
+  font-family:"Noto Sans JP",sans-serif;font-size:12px;font-weight:700;letter-spacing:4px;text-transform:uppercase;
+}
+.op-brand span:first-child{font-family:"Noto Serif JP",serif;font-size:22px;color:#c8697a}
 .op-scene{
-  position:absolute;inset:0;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  z-index:8;gap:0;
+  position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;
 }
-.op-title-wrap{text-align:center;animation:opFadeUp 1.8s cubic-bezier(0.22,1,0.36,1) both;animation-delay:0.5s;}
-@keyframes opFadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
-.op-title-jp{font-family:'Noto Serif JP',serif;font-weight:200;font-size:clamp(13px,2vw,18px);letter-spacing:0.8em;color:var(--text-mid);opacity:0.8;margin-bottom:10px;}
-.op-title-main{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:clamp(52px,10vw,90px);color:var(--pink-deep);letter-spacing:0.05em;line-height:1;text-shadow:0 2px 30px rgba(200,105,122,0.25),0 0 60px rgba(232,160,176,0.15);animation:titleBreath 5s ease-in-out infinite;animation-delay:2.3s;}
-@keyframes titleBreath{
-  0%,100%{text-shadow:0 2px 30px rgba(200,105,122,0.25),0 0 60px rgba(232,160,176,0.15);}
-  50%{text-shadow:0 2px 45px rgba(200,105,122,0.4),0 0 90px rgba(232,160,176,0.3);}
-}
-.op-title-sub{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(12px,1.8vw,16px);letter-spacing:0.35em;color:var(--text-mid);margin-top:10px;opacity:0.75;text-transform:uppercase;}
-.op-divider{margin:18px auto;width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--pink-mid),transparent);opacity:0.6;animation:opFadeUp 2s both;animation-delay:0.9s;}
-.op-petals-line{font-size:18px;letter-spacing:0.3em;opacity:0.5;animation:opFadeUp 2s both;animation-delay:1.1s;color:var(--pink-deep);}
-/* Enter button */
+.op-title-jp{font-family:"Noto Serif JP",serif;font-weight:300;font-size:clamp(13px,2vw,18px);letter-spacing:.72em;color:#8b4f60;opacity:.8;margin-bottom:10px}
+.op-title-main{font-size:clamp(58px,11vw,112px);font-weight:300;font-style:italic;letter-spacing:.05em;line-height:.94;color:#c8697a;text-shadow:0 12px 56px rgba(200,105,122,.26)}
+.op-title-sub{margin-top:12px;font-family:"Noto Sans JP",sans-serif;font-size:11px;letter-spacing:.42em;text-transform:uppercase;color:#8b4f60;opacity:.78}
+.op-divider{width:138px;height:1px;margin:22px auto;background:linear-gradient(90deg,transparent,#e8a0b0,transparent)}
+.op-petals-line{color:#c8697a;letter-spacing:.4em;opacity:.64}
 .op-enter-btn{
-  margin-top:32px;padding:15px 50px;
-  font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(14px,2vw,17px);
-  letter-spacing:0.35em;color:var(--pink-deep);
-  background:rgba(253,240,243,0.6);border:1px solid rgba(200,105,122,0.4);
-  cursor:none;position:relative;overflow:hidden;
-  animation:opFadeUp 1.6s both;animation-delay:1.7s;
-  transition:color 0.5s,border-color 0.5s,box-shadow 0.5s;
-  backdrop-filter:blur(8px);text-transform:uppercase;border-radius:2px;
+  margin-top:34px;padding:15px 48px;border:1px solid rgba(200,105,122,.42);border-radius:3px;
+  background:rgba(255,240,244,.66);backdrop-filter:blur(12px);color:#c8697a;
+  font-size:16px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;overflow:hidden;position:relative;
+  transition:transform .35s,box-shadow .35s,color .35s,border-color .35s;
 }
 .op-enter-btn::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,var(--pink-light),var(--pink-mid));
-  transform:scaleX(0);transform-origin:left;
-  transition:transform 0.6s cubic-bezier(0.77,0,0.175,1);z-index:-1;
+  content:"";position:absolute;inset:0;background:linear-gradient(120deg,#e8728a,#f7b8c5);transform:scaleX(0);
+  transform-origin:left;transition:transform .55s cubic-bezier(.77,0,.175,1);z-index:-1;
 }
-.op-enter-btn:hover{color:#fff;border-color:var(--pink-mid);box-shadow:0 8px 40px rgba(200,105,122,0.25);}
-.op-enter-btn:hover::before{transform:scaleX(1);}
-.op-enter-btn .blossom{display:inline-block;margin:0 8px;transition:transform 0.4s;font-style:normal;}
-.op-enter-btn:hover .blossom{transform:rotate(180deg) scale(1.3);}
-/* Haiku */
-.op-haiku{position:absolute;bottom:22%;right:5%;text-align:right;z-index:8;animation:opFadeUp 2.5s both;animation-delay:2.2s;}
-.op-haiku p{font-family:'Noto Serif JP',serif;font-weight:200;font-size:clamp(10px,1.4vw,13px);color:var(--text-mid);opacity:0.55;letter-spacing:0.15em;line-height:2.2;}
-/* Gyaan brand badge on opening */
-.op-brand{
-  position:absolute;top:28px;left:50%;transform:translateX(-50%);
-  z-index:9;text-align:center;
-  animation:opFadeUp 1.2s both;animation-delay:0.2s;
+.op-enter-btn:hover{color:#fff;border-color:#e8728a;transform:translateY(-2px);box-shadow:0 16px 50px rgba(200,105,122,.28)}
+.op-enter-btn:hover::before{transform:scaleX(1)}
+.op-haiku{position:absolute;right:5%;bottom:21%;z-index:3;text-align:right;color:#8b4f60;opacity:.58}
+.op-haiku p{font-family:"Noto Serif JP",serif;font-size:13px;letter-spacing:.14em;line-height:2.1}
+
+#ninja-welcome{
+  position:fixed;inset:0;z-index:2500;display:none;place-items:center;overflow:hidden;
+  background:radial-gradient(circle at 50% 38%,rgba(255,245,247,.22),transparent 33%),linear-gradient(180deg,rgba(26,18,20,.96),rgba(67,46,49,.94));
 }
-.op-brand-kanji{font-family:'Noto Serif JP',serif;font-size:18px;font-weight:700;color:var(--pink-deep);display:inline-block;margin-right:10px;vertical-align:middle;}
-.op-brand-text{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;letter-spacing:4px;color:var(--text-mid);text-transform:uppercase;vertical-align:middle;}
-
-/* Transition overlay */
-.op-t-overlay{position:absolute;inset:0;z-index:100;pointer-events:none;opacity:0;display:flex;align-items:center;justify-content:center;}
-.op-t-overlay.go{pointer-events:all;animation:overlayIn 1.6s cubic-bezier(0.76,0,0.24,1) forwards;}
-@keyframes overlayIn{0%{opacity:0;}30%{opacity:1;}100%{opacity:1;}}
-#op-t-canvas{position:absolute;inset:0;}
-.op-t-text{position:relative;z-index:2;text-align:center;opacity:0;animation:tTextIn 0.8s ease forwards;animation-delay:0.4s;}
-@keyframes tTextIn{from{opacity:0;transform:scale(0.85);}to{opacity:1;transform:scale(1);}}
-.op-t-text span{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(28px,6vw,52px);color:#fff;letter-spacing:0.12em;text-shadow:0 2px 20px rgba(200,105,122,0.6);}
-.op-t-text small{display:block;font-family:'Noto Serif JP',serif;font-weight:200;font-size:clamp(10px,1.8vw,15px);color:rgba(255,255,255,0.75);letter-spacing:0.5em;margin-top:10px;}
-
-/* ══════════════════════════════════════════
-   MAIN SITE — NOISE TEXTURE
-══════════════════════════════════════════ */
-#main-site{display:none;opacity:0;transition:opacity 0.8s ease;}
-#main-site.visible{display:block;opacity:1;}
-#main-site::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:1;opacity:0.6;}
-
-/* ── SAKURA CANVAS ── */
-#sakura-canvas{position:fixed;inset:0;z-index:500;pointer-events:none;}
-
-/* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:300;padding:18px 60px;display:flex;justify-content:space-between;align-items:center;background:rgba(253,248,242,0.92);backdrop-filter:blur(18px);border-bottom:1px solid rgba(201,168,76,0.2);animation:fadeDown 0.8s ease forwards;}
-@keyframes fadeDown{from{transform:translateY(-100%);opacity:0;}to{transform:translateY(0);opacity:1;}}
-.nav-logo{display:flex;align-items:center;gap:14px;text-decoration:none;}
-.logo-kanji{font-family:'Noto Serif JP',serif;font-size:26px;font-weight:700;color:var(--sakura3);line-height:1;}
-.logo-text{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--ink);letter-spacing:2px;}
-.logo-sub{font-size:10px;color:var(--muted);letter-spacing:4px;text-transform:uppercase;display:block;}
-.nav-links{display:flex;gap:32px;list-style:none;align-items:center;}
-.nav-links a{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:600;letter-spacing:2px;color:var(--muted);text-decoration:none;text-transform:uppercase;transition:color 0.3s;position:relative;cursor:none;}
-.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--sakura3);transition:width 0.3s;}
-.nav-links a:hover{color:var(--ink);}
-.nav-links a:hover::after{width:100%;}
-.nav-cta{background:var(--sakura3) !important;color:var(--white) !important;padding:9px 22px !important;border-radius:2px;font-size:13px !important;letter-spacing:2px !important;}
-.nav-cta::after{display:none !important;}
-.nav-cta:hover{background:var(--sakura2) !important;color:var(--white) !important;}
-.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:none;background:none;border:none;padding:4px;}
-.nav-hamburger span{display:block;width:24px;height:2px;background:var(--ink);border-radius:2px;transition:all 0.3s;}
-.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(253,248,242,0.98);z-index:290;flex-direction:column;align-items:center;justify-content:center;gap:32px;}
-.mobile-menu.open{display:flex;}
-.mobile-menu a{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;letter-spacing:4px;color:var(--ink);text-decoration:none;text-transform:uppercase;transition:color 0.3s;cursor:none;}
-.mobile-menu a:hover{color:var(--sakura3);}
-.mobile-close{position:absolute;top:24px;right:24px;background:none;border:none;font-size:28px;color:var(--ink);cursor:none;}
-
-/* ── HERO ── */
-#hero{min-height:100vh;display:flex;align-items:center;padding:130px 60px 80px;position:relative;overflow:hidden;z-index:2;background:linear-gradient(160deg,var(--cream) 55%,rgba(249,200,212,0.18));}
-.deco-circle{position:absolute;border-radius:50%;border:1px solid;pointer-events:none;}
-.deco1{width:600px;height:600px;border-color:rgba(201,168,76,0.1);top:-100px;right:-200px;animation:slowSpin 40s linear infinite;}
-.deco2{width:400px;height:400px;border-color:rgba(232,114,138,0.12);top:50px;right:-100px;animation:slowSpin 30s linear infinite reverse;}
-.deco3{width:200px;height:200px;border-color:rgba(201,168,76,0.15);top:150px;right:50px;animation:slowSpin 20s linear infinite;}
-@keyframes slowSpin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
-.jp-deco{position:absolute;right:80px;top:50%;transform:translateY(-50%);font-family:'Noto Serif JP',serif;font-size:13px;color:rgba(201,168,76,0.3);writing-mode:vertical-rl;text-orientation:mixed;letter-spacing:8px;line-height:2;pointer-events:none;animation:fadeUp 1s ease 1s both;}
-.mountain-svg{position:absolute;bottom:0;right:0;width:55%;opacity:0.05;pointer-events:none;}
-.hero-content{max-width:660px;position:relative;z-index:3;}
-.hero-season{display:inline-flex;align-items:center;gap:10px;font-family:'Noto Sans JP',sans-serif;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--sakura3);margin-bottom:28px;opacity:0;animation:fadeUp 0.7s ease 0.4s forwards;}
-.season-line{width:40px;height:1px;background:var(--sakura3);}
-.hero-jp{font-family:'Noto Serif JP',serif;font-size:clamp(16px,2.5vw,26px);font-weight:300;color:var(--gold);letter-spacing:10px;margin-bottom:16px;opacity:0;animation:fadeUp 0.7s ease 0.6s forwards;}
-.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(52px,8vw,96px);font-weight:300;line-height:1.0;letter-spacing:-2px;color:var(--ink);margin-bottom:24px;opacity:0;animation:fadeUp 0.8s ease 0.8s forwards;}
-.hero-title em{font-style:italic;color:var(--sakura3);}
-.hero-title .block{display:block;}
-.hero-desc{font-size:18px;font-weight:300;color:var(--muted);line-height:1.9;max-width:500px;margin-bottom:44px;opacity:0;animation:fadeUp 0.7s ease 1s forwards;}
-.hero-btns{display:flex;gap:16px;flex-wrap:wrap;opacity:0;animation:fadeUp 0.7s ease 1.2s forwards;}
-.btn-ink{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;letter-spacing:3px;text-transform:uppercase;padding:14px 32px;background:var(--ink);color:var(--cream);border:none;border-radius:2px;cursor:none;text-decoration:none;transition:all 0.3s;display:inline-block;}
-.btn-ink:hover{background:var(--ink2);transform:translateY(-2px);box-shadow:0 8px 30px rgba(26,18,8,0.2);}
-.btn-outline{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;letter-spacing:3px;text-transform:uppercase;padding:14px 32px;background:transparent;color:var(--ink);border:1px solid rgba(26,18,8,0.25);border-radius:2px;cursor:none;text-decoration:none;transition:all 0.3s;display:inline-block;}
-.btn-outline:hover{border-color:var(--sakura3);color:var(--sakura3);transform:translateY(-2px);}
-.hero-stats{display:flex;gap:48px;margin-top:60px;padding-top:36px;border-top:1px solid rgba(26,18,8,0.1);opacity:0;animation:fadeUp 0.7s ease 1.4s forwards;flex-wrap:wrap;}
-.hstat-num{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:300;color:var(--ink);display:block;line-height:1;}
-.hstat-label{font-family:'Noto Sans JP',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-top:4px;display:block;}
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
-
-/* ── DIVIDER ── */
-.divider{display:flex;align-items:center;gap:20px;padding:0 60px;margin:20px 0;position:relative;z-index:2;}
-.div-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.3),transparent);}
-.div-sym{font-family:'Noto Serif JP',serif;font-size:18px;color:var(--gold);opacity:0.6;}
-
-/* ── SECTION BASE ── */
-section{position:relative;z-index:2;}
-.sec-pad{padding:100px 60px;}
-.sec-label{font-family:'Noto Sans JP',sans-serif;font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--sakura3);display:flex;align-items:center;gap:12px;margin-bottom:16px;}
-.sec-label::before{content:'';width:30px;height:1px;background:var(--sakura3);}
-.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,56px);font-weight:300;letter-spacing:-1px;color:var(--ink);line-height:1.1;margin-bottom:14px;}
-.sec-title em{font-style:italic;color:var(--sakura3);}
-.sec-jp{font-family:'Noto Serif JP',serif;font-size:13px;color:var(--gold);letter-spacing:6px;margin-bottom:48px;}
-
-/* ── FEATURED ── */
-#featured{background:var(--cream);}
-.featured-wrap{display:grid;grid-template-columns:1.1fr 0.9fr;gap:0;border:1px solid rgba(26,18,8,0.08);border-radius:4px;overflow:hidden;background:var(--white);box-shadow:0 12px 60px rgba(26,18,8,0.08);transition:transform 0.4s,box-shadow 0.4s;opacity:0;transform:translateY(24px);}
-.featured-wrap.visible{opacity:1;transform:translateY(0);}
-.featured-wrap:hover{transform:translateY(-5px);box-shadow:0 24px 80px rgba(26,18,8,0.14);}
-.featured-img{min-height:380px;position:relative;overflow:hidden;}
-.featured-img svg{position:absolute;inset:0;width:100%;height:100%;}
-.featured-body{padding:52px 48px;display:flex;flex-direction:column;justify-content:center;gap:18px;}
-.featured-tag{display:inline-flex;align-items:center;gap:8px;font-family:'Noto Sans JP',sans-serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--sakura3);}
-.featured-tag::before{content:'';width:20px;height:1px;background:var(--sakura3);}
-.featured-title{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3vw,36px);font-weight:600;line-height:1.25;color:var(--ink);transition:color 0.3s;}
-.featured-wrap:hover .featured-title{color:var(--sakura3);}
-.featured-excerpt{font-size:16px;font-weight:300;color:var(--muted);line-height:1.85;}
-.featured-meta{display:flex;align-items:center;gap:14px;font-family:'Noto Sans JP',sans-serif;font-size:11px;color:var(--muted);letter-spacing:1px;flex-wrap:wrap;}
-.meta-dot{width:3px;height:3px;background:var(--sakura2);border-radius:50%;}
-
-/* ── CATEGORIES ── */
-#categories{background:var(--parchment);}
-.cat-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:48px;}
-.cat-card{background:var(--white);border:1px solid rgba(26,18,8,0.07);border-radius:4px;padding:28px 16px;text-align:center;cursor:none;transition:all 0.35s;position:relative;overflow:hidden;}
-.cat-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--sakura3),var(--sakura2));opacity:0;transition:opacity 0.3s;}
-.cat-card:hover::before{opacity:0.07;}
-.cat-card:hover{transform:translateY(-4px);border-color:rgba(232,114,138,0.4);box-shadow:0 12px 40px rgba(232,114,138,0.1);}
-.cat-icon{font-size:2.2rem;margin-bottom:12px;display:block;position:relative;z-index:1;}
-.cat-name{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;color:var(--ink);position:relative;z-index:1;}
-.cat-count{font-family:'Noto Sans JP',sans-serif;font-size:10px;letter-spacing:2px;color:var(--sakura3);margin-top:4px;position:relative;z-index:1;}
-
-/* ── ARTICLE GRID ── */
-#articles{background:var(--cream);}
-.articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;}
-.article-card{background:var(--white);border:1px solid rgba(26,18,8,0.07);border-radius:4px;overflow:hidden;transition:all 0.4s;cursor:none;opacity:0;transform:translateY(24px);}
-.article-card.visible{opacity:1;transform:translateY(0);}
-.article-card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(26,18,8,0.12);}
-.card-img{width:100%;height:200px;position:relative;overflow:hidden;}
-.card-img-inner{width:100%;height:100%;transition:transform 0.6s ease;}
-.article-card:hover .card-img-inner{transform:scale(1.05);}
-.card-cat{font-family:'Noto Sans JP',sans-serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--sakura3);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
-.card-cat::before{content:'';width:20px;height:1px;background:var(--sakura3);}
-.card-body{padding:24px 26px 28px;}
-.card-title{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:600;line-height:1.35;color:var(--ink);margin-bottom:10px;transition:color 0.3s;}
-.article-card:hover .card-title{color:var(--sakura3);}
-.card-excerpt{font-size:14px;color:var(--muted);line-height:1.8;font-weight:300;margin-bottom:18px;}
-.card-meta{display:flex;align-items:center;gap:12px;font-family:'Noto Sans JP',sans-serif;font-size:11px;color:var(--muted);letter-spacing:1px;}
-
-/* ── CULTURE STRIP ── */
-#culture{background:var(--parchment);}
-.culture-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:48px;}
-.culture-item{position:relative;aspect-ratio:3/4;overflow:hidden;cursor:none;}
-.culture-bg{width:100%;height:100%;transition:transform 0.6s ease;}
-.culture-item:hover .culture-bg{transform:scale(1.08);}
-.culture-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(26,18,8,0.7));display:flex;flex-direction:column;justify-content:flex-end;padding:24px;transition:background 0.3s;}
-.culture-item:hover .culture-overlay{background:linear-gradient(180deg,transparent 20%,rgba(26,18,8,0.85));}
-.culture-jp{font-family:'Noto Serif JP',serif;font-size:22px;color:rgba(255,255,255,0.45);letter-spacing:4px;writing-mode:vertical-rl;position:absolute;right:16px;top:20px;}
-.culture-name{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--white);margin-bottom:4px;}
-.culture-desc{font-size:11px;color:rgba(255,255,255,0.6);font-family:'Noto Sans JP',sans-serif;letter-spacing:2px;text-transform:uppercase;}
-.cb1{background:linear-gradient(160deg,#f9dde4,#e8a0b4,#c06080);}
-.cb2{background:linear-gradient(160deg,#e8f4fd,#90caf9,#3a7fc1);}
-.cb3{background:linear-gradient(160deg,#f5f0e8,#d4a76a,#8b6340);}
-.cb4{background:linear-gradient(160deg,#e8f5e9,#81c784,#2e7d32);}
-
-/* ── FACTS ── */
-#facts{padding:100px 60px;background:var(--cream);}
-.facts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;}
-.fact-card{background:var(--white);border:1px solid rgba(201,168,76,0.2);border-left:3px solid var(--gold);border-radius:2px;padding:32px 28px;transition:transform 0.25s,box-shadow 0.25s;opacity:0;transform:translateY(20px);}
-.fact-card.visible{opacity:1;transform:translateY(0);}
-.fact-card:hover{transform:translateY(-3px);box-shadow:0 10px 40px rgba(26,18,8,0.08);}
-.fact-number{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;color:var(--gold);line-height:1;margin-bottom:6px;}
-.fact-label{font-family:'Noto Sans JP',sans-serif;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:3px;color:var(--sakura3);margin-bottom:10px;}
-.fact-desc{font-size:14px;color:var(--muted);line-height:1.7;font-weight:300;}
-
-/* ── QUOTE ── */
-#quote{padding:120px 60px;text-align:center;background:linear-gradient(180deg,var(--cream),rgba(249,200,212,0.12),var(--cream));position:relative;overflow:hidden;}
-.quote-jp-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif JP',serif;font-size:220px;color:rgba(201,168,76,0.04);pointer-events:none;user-select:none;letter-spacing:20px;}
-.quote-text{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3.5vw,40px);font-weight:300;font-style:italic;line-height:1.6;color:var(--ink);max-width:820px;margin:0 auto 24px;position:relative;z-index:2;}
-.quote-text::before{content:'\201C';font-size:120px;color:rgba(232,114,138,0.12);position:absolute;top:-40px;left:-20px;font-style:normal;line-height:1;}
-.quote-src{font-family:'Noto Sans JP',sans-serif;font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);position:relative;z-index:2;}
-
-/* ── LATEST ── */
-#latest{background:var(--parchment);}
-.latest-list{display:flex;flex-direction:column;gap:0;margin-top:48px;}
-.latest-item{display:grid;grid-template-columns:80px 1fr auto;align-items:center;gap:32px;padding:28px 0;border-bottom:1px solid rgba(26,18,8,0.08);cursor:none;transition:all 0.3s;opacity:0;transform:translateX(-20px);}
-.latest-item.visible{opacity:1;transform:translateX(0);}
-.latest-item:hover{padding-left:14px;}
-.latest-num{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;color:rgba(26,18,8,0.07);line-height:1;text-align:center;}
-.latest-cat{font-family:'Noto Sans JP',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--sakura3);margin-bottom:6px;}
-.latest-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--ink);transition:color 0.3s;line-height:1.3;}
-.latest-item:hover .latest-title{color:var(--sakura3);}
-.latest-date{font-family:'Noto Sans JP',sans-serif;font-size:11px;color:var(--muted);letter-spacing:2px;white-space:nowrap;}
-
-/* ── NEWSLETTER ── */
-#newsletter{padding:100px 60px;background:var(--ink);position:relative;overflow:hidden;}
-.nl-bg-jp{position:absolute;inset:0;font-family:'Noto Serif JP',serif;font-size:260px;color:rgba(255,255,255,0.018);display:flex;align-items:center;justify-content:center;letter-spacing:20px;pointer-events:none;user-select:none;}
-.nl-inner{max-width:620px;margin:0 auto;text-align:center;position:relative;z-index:2;}
-.nl-tag{font-family:'Noto Sans JP',sans-serif;font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--sakura2);margin-bottom:20px;}
-.nl-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,54px);font-weight:300;color:var(--cream);line-height:1.1;margin-bottom:16px;}
-.nl-title em{font-style:italic;color:var(--sakura2);}
-.nl-desc{font-size:16px;color:rgba(253,248,242,0.45);line-height:1.85;font-weight:300;margin-bottom:40px;}
-.nl-form{display:flex;gap:0;max-width:460px;margin:0 auto;}
-.nl-input{flex:1;font-family:'Cormorant Garamond',serif;font-size:16px;padding:14px 20px;background:rgba(253,248,242,0.07);border:1px solid rgba(253,248,242,0.15);border-right:none;border-radius:2px 0 0 2px;color:var(--cream);outline:none;transition:border-color 0.3s;cursor:none;}
-.nl-input::placeholder{color:rgba(253,248,242,0.3);}
-.nl-input:focus{border-color:rgba(249,200,212,0.5);}
-.nl-btn{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:600;letter-spacing:3px;text-transform:uppercase;padding:14px 28px;background:var(--sakura3);color:var(--white);border:none;border-radius:0 2px 2px 0;cursor:none;transition:background 0.3s;}
-.nl-btn:hover{background:var(--sakura2);}
-
-/* ── FOOTER ── */
-footer{background:var(--ink2);padding:60px 60px 32px;position:relative;z-index:2;}
-.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(253,248,242,0.08);margin-bottom:32px;}
-.footer-brand .logo-kanji{font-size:36px;}
-.footer-brand .logo-text{color:rgba(253,248,242,0.6);}
-.footer-tagline{font-size:14px;color:rgba(253,248,242,0.3);line-height:1.85;margin-top:16px;font-weight:300;}
-.footer-col h4{font-family:'Noto Sans JP',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;}
-.footer-col ul{list-style:none;}
-.footer-col ul li{margin-bottom:10px;}
-.footer-col ul li a{font-size:14px;color:rgba(253,248,242,0.4);text-decoration:none;transition:color 0.3s;font-weight:300;cursor:none;}
-.footer-col ul li a:hover{color:var(--sakura2);}
-.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
-.footer-copy{font-family:'Noto Sans JP',sans-serif;font-size:11px;letter-spacing:2px;color:rgba(253,248,242,0.2);}
-.footer-jp{font-family:'Noto Serif JP',serif;font-size:22px;color:rgba(253,248,242,0.08);letter-spacing:8px;}
-
-/* ── RESPONSIVE ── */
-@media(max-width:1024px){
-  .cat-grid{grid-template-columns:repeat(3,1fr);}
-  .footer-top{grid-template-columns:1fr 1fr;gap:32px;}
-  .articles-grid{grid-template-columns:1fr 1fr;}
-  .facts-grid{grid-template-columns:1fr 1fr;}
-  .jp-deco{display:none;}
+#ninja-welcome.active{display:grid;animation:ninjaIn .5s ease forwards}
+#ninja-welcome.leave{animation:ninjaOut .8s cubic-bezier(.76,0,.24,1) forwards}
+@keyframes ninjaIn{from{opacity:0}to{opacity:1}}
+@keyframes ninjaOut{to{opacity:0;visibility:hidden}}
+.moon{
+  position:absolute;top:12%;left:50%;width:min(260px,48vw);aspect-ratio:1;border-radius:50%;transform:translateX(-50%);
+  background:radial-gradient(circle at 40% 34%,#fff,#ffe9ef 62%,rgba(255,232,239,.18) 68%,transparent 72%);
+  box-shadow:0 0 70px rgba(249,200,212,.32);
 }
-@media(max-width:768px){
-  nav{padding:16px 24px;}
-  .nav-links{display:none;}
-  .nav-hamburger{display:flex;}
-  #hero{padding:110px 24px 60px;}
-  .sec-pad{padding:70px 24px;}
-  .divider{padding:0 24px;}
-  .cat-grid{grid-template-columns:repeat(2,1fr);}
-  .articles-grid{grid-template-columns:1fr;}
-  .featured-wrap{grid-template-columns:1fr;}
-  .featured-img{min-height:260px;}
-  .featured-body{padding:32px 28px;}
-  .culture-grid{grid-template-columns:1fr 1fr;}
-  .facts-grid{grid-template-columns:1fr;}
-  .hero-stats{gap:28px;}
-  .hero-btns{flex-direction:column;max-width:280px;}
-  .btn-ink,.btn-outline{text-align:center;}
-  #newsletter{padding:70px 24px;}
-  .nl-form{flex-direction:column;}
-  .nl-input{border-right:1px solid rgba(253,248,242,0.15);border-bottom:none;border-radius:2px 2px 0 0;}
-  .nl-btn{border-radius:0 0 2px 2px;}
-  footer{padding:48px 24px 28px;}
-  .footer-top{grid-template-columns:1fr;gap:32px;}
-  .footer-bottom{flex-direction:column;align-items:flex-start;}
-  .latest-item{grid-template-columns:60px 1fr;gap:20px;}
-  .latest-date{display:none;}
-  #facts{padding:70px 24px;}
-  #quote{padding:80px 24px;}
-  .quote-text::before{font-size:80px;top:-20px;left:-10px;}
-  .op-haiku{display:none;}
+.ninja-card{position:relative;z-index:2;text-align:center;padding:24px;color:#fff}
+.ninja-figure{
+  width:min(240px,56vw);height:min(240px,56vw);margin:0 auto 22px;position:relative;
+  transform-origin:50% 84%;
+  animation:ninjaWelcomeBow 3.35s cubic-bezier(.68,-.1,.24,1.08) both,ninjaFloat 2.6s ease-in-out 3.35s infinite;
 }
-@media(max-width:480px){
-  .cat-grid{grid-template-columns:repeat(2,1fr);}
-  .culture-grid{grid-template-columns:1fr 1fr;}
-  .hero-title{font-size:clamp(42px,12vw,72px);}
+@keyframes ninjaFloat{50%{transform:translateY(-8px)}}
+@keyframes ninjaWelcomeBow{
+  0%,15%{transform:translateY(0) rotate(0deg)}
+  34%,57%{transform:translateY(18px) rotate(13deg)}
+  76%,100%{transform:translateY(0) rotate(0deg)}
+}
+.ninja-head{
+  position:absolute;left:50%;top:19%;width:38%;height:38%;transform:translateX(-50%);
+  border-radius:50%;background:linear-gradient(145deg,#111,#2b2023);box-shadow:0 14px 34px rgba(0,0,0,.28);
+}
+.ninja-head::before{
+  content:"";position:absolute;left:14%;right:14%;top:39%;height:24%;border-radius:20px;
+  background:linear-gradient(90deg,#f6dccf,#fff2e9);
+}
+.ninja-eye{position:absolute;top:47%;width:8px;height:8px;border-radius:50%;background:#17100b;box-shadow:0 0 8px rgba(232,114,138,.4)}
+.ninja-eye.left{left:36%}.ninja-eye.right{right:36%}
+.ninja-body{
+  position:absolute;left:50%;top:52%;width:52%;height:34%;transform:translateX(-50%);
+  border-radius:48% 48% 22% 22%;background:linear-gradient(145deg,#191313,#302226);
+}
+.ninja-sash{
+  position:absolute;left:26%;right:26%;top:62%;height:12px;border-radius:20px;background:linear-gradient(90deg,#e8728a,#f9c8d4);
+  transform:rotate(-12deg);
+}
+.ninja-sword{
+  position:absolute;left:24%;top:45%;width:54%;height:5px;border-radius:20px;background:#c9a84c;transform:rotate(-35deg);
+  box-shadow:88px 0 0 -1px #f8efe5;
+}
+.ninja-shadow{position:absolute;left:50%;bottom:7%;width:44%;height:12%;border-radius:50%;transform:translateX(-50%);background:rgba(0,0,0,.22);filter:blur(5px);animation:ninjaShadowBow 3.35s ease both}
+@keyframes ninjaShadowBow{34%,57%{transform:translateX(-50%) scaleX(1.2);opacity:.72}}
+.ninja-title{
+  max-width:min(720px,92vw);font-size:clamp(30px,6.4vw,62px);font-weight:300;font-style:italic;letter-spacing:.06em;line-height:1.08;
+  text-shadow:0 4px 28px rgba(232,114,138,.38);
+}
+.ninja-sub{margin-top:10px;font-family:"Noto Serif JP",serif;font-size:clamp(12px,2.2vw,16px);letter-spacing:.42em;color:rgba(255,255,255,.72)}
+.ninja-line{width:160px;height:1px;margin:22px auto;background:linear-gradient(90deg,transparent,#f9c8d4,transparent)}
+
+#main-site{display:none;opacity:0;transition:opacity .75s ease;position:relative}
+#main-site.visible{display:block;opacity:1}
+#sakura-canvas{position:fixed;z-index:20}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px clamp(22px,5vw,64px);
+  background:rgba(255,248,242,.9);backdrop-filter:blur(18px);border-bottom:1px solid rgba(201,168,76,.22);
+}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-kanji{font-family:"Noto Serif JP",serif;font-size:27px;font-weight:700;color:var(--rose)}
+.logo-text{font-size:20px;font-weight:600;letter-spacing:2px}
+.logo-sub{display:block;font-family:"Noto Sans JP",sans-serif;font-size:10px;letter-spacing:3px;color:#8c7a6b;text-transform:uppercase}
+.nav-links{display:flex;gap:28px;list-style:none;align-items:center}
+.nav-links a{font-family:"Noto Sans JP",sans-serif;font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:#6f6155;position:relative}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--rose);transition:width .25s}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{padding:10px 18px!important;background:var(--rose);color:#fff!important;border-radius:3px}
+.nav-cta::after{display:none}
+#hero{
+  min-height:100vh;display:grid;align-items:center;padding:130px clamp(24px,5vw,70px) 76px;position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle at 82% 23%,rgba(249,200,212,.28),transparent 24%),
+    radial-gradient(circle at 74% 66%,rgba(201,168,76,.13),transparent 28%),
+    linear-gradient(150deg,var(--cream) 56%,rgba(249,200,212,.18));
+}
+.jp-deco{position:absolute;right:7%;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;font-family:"Noto Serif JP",serif;letter-spacing:8px;color:rgba(201,168,76,.32)}
+.mount-fuji{
+  position:absolute;right:-5%;bottom:0;width:min(760px,65vw);height:48%;opacity:.08;
+  background:linear-gradient(135deg,transparent 50%,var(--ink) 50%) left bottom/50% 100% no-repeat,
+             linear-gradient(225deg,transparent 50%,var(--ink) 50%) right bottom/50% 100% no-repeat;
+}
+.hero-content{max-width:700px;position:relative;z-index:2}
+.hero-kicker{display:flex;align-items:center;gap:12px;font-family:"Noto Sans JP",sans-serif;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--rose);margin-bottom:26px}
+.hero-kicker::before{content:"";width:42px;height:1px;background:var(--rose)}
+.hero-jp{font-family:"Noto Serif JP",serif;font-size:clamp(17px,2.6vw,27px);font-weight:300;letter-spacing:10px;color:var(--gold);margin-bottom:16px}
+.hero-title{font-size:clamp(54px,9vw,104px);font-weight:300;line-height:.96;letter-spacing:-1px;margin-bottom:24px}
+.hero-title em{color:var(--rose);font-style:italic}
+.hero-title span{display:block}
+.hero-desc{max-width:540px;font-size:19px;font-weight:300;line-height:1.85;color:#78695e;margin-bottom:40px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 28px;border-radius:3px;text-decoration:none;
+  font-family:"Noto Sans JP",sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;transition:transform .25s,box-shadow .25s,background .25s,color .25s,border-color .25s;
+}
+.btn.dark{background:var(--ink);color:var(--cream)}
+.btn.light{border:1px solid rgba(23,16,11,.22)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(23,16,11,.14)}
+.stats{display:flex;gap:44px;flex-wrap:wrap;margin-top:56px;padding-top:34px;border-top:1px solid rgba(23,16,11,.1)}
+.stat strong{display:block;font-size:42px;font-weight:300;line-height:1}
+.stat span{font-family:"Noto Sans JP",sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#8c7a6b}
+.section{padding:96px clamp(24px,5vw,70px);position:relative;z-index:2}
+.label{display:flex;align-items:center;gap:12px;font-family:"Noto Sans JP",sans-serif;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--rose);margin-bottom:14px}
+.label::before{content:"";width:32px;height:1px;background:var(--rose)}
+.title{font-size:clamp(34px,5vw,58px);font-weight:300;line-height:1.08;margin-bottom:12px}
+.title em{color:var(--rose);font-style:italic}
+.jp-small{font-family:"Noto Serif JP",serif;font-size:13px;letter-spacing:6px;color:var(--gold);margin-bottom:44px}
+.featured{
+  display:grid;grid-template-columns:1.08fr .92fr;overflow:hidden;border:1px solid rgba(23,16,11,.08);border-radius:6px;
+  background:#fff;box-shadow:0 22px 72px rgba(23,16,11,.1)
+}
+.featured-art{
+  min-height:380px;background:
+    radial-gradient(circle at 82% 18%,rgba(255,255,255,.74) 0 7%,transparent 8%),
+    radial-gradient(circle at 18% 38%,rgba(249,200,212,.9) 0 14%,transparent 15%),
+    radial-gradient(circle at 82% 43%,rgba(244,167,185,.82) 0 13%,transparent 14%),
+    linear-gradient(180deg,#fde8f0 0 63%,#b7dca8 64%);
+  position:relative;
+}
+.featured-art::before{content:"";position:absolute;left:44%;bottom:31%;width:80px;height:78px;border:10px solid #c0392b;border-bottom:none}
+.featured-art::after{content:"";position:absolute;left:36%;bottom:27%;width:28%;height:1px;background:#c0392b;box-shadow:0 12px 0 #c0392b}
+.featured-body{padding:50px clamp(28px,4vw,52px);display:flex;flex-direction:column;justify-content:center;gap:18px}
+.tag{font-family:"Noto Sans JP",sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--rose)}
+.featured-title{font-size:clamp(27px,3.4vw,40px);font-weight:600;line-height:1.18}
+.excerpt{font-size:17px;font-weight:300;line-height:1.8;color:#796b61}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{background:#fff;border:1px solid rgba(23,16,11,.08);border-radius:6px;overflow:hidden;transition:transform .3s,box-shadow .3s}
+.card:hover{transform:translateY(-6px);box-shadow:0 22px 62px rgba(23,16,11,.12)}
+.card-img{height:190px;background:linear-gradient(150deg,#fce4ec,#bbdefb 55%,#c8e6c9)}
+.card:nth-child(2) .card-img{background:linear-gradient(150deg,#fff3e0,#d4a76a)}
+.card:nth-child(3) .card-img{background:linear-gradient(150deg,#e8f5e9,#81c784,#2e7d32)}
+.card-body{padding:24px}
+.card-title{font-size:23px;font-weight:600;line-height:1.28;margin:10px 0}
+.card p{font-size:15px;line-height:1.72;color:#796b61}
+.culture{background:var(--paper)}
+.culture-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.culture-item{min-height:330px;position:relative;overflow:hidden;padding:24px;display:flex;align-items:flex-end;color:white;background:linear-gradient(160deg,#f9dde4,#c06080)}
+.culture-item:nth-child(2){background:linear-gradient(160deg,#e8f4fd,#3a7fc1)}
+.culture-item:nth-child(3){background:linear-gradient(160deg,#f5f0e8,#8b6340)}
+.culture-item:nth-child(4){background:linear-gradient(160deg,#e8f5e9,#2e7d32)}
+.culture-item::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 28%,rgba(23,16,11,.72))}
+.culture-copy{position:relative;z-index:1}
+.culture-jp{position:absolute;right:18px;top:20px;font-family:"Noto Serif JP",serif;font-size:26px;letter-spacing:5px;writing-mode:vertical-rl;color:rgba(255,255,255,.5)}
+.culture-name{font-size:28px;font-weight:600}
+.culture-desc{font-family:"Noto Sans JP",sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.68)}
+.newsletter{background:var(--ink);color:var(--cream);text-align:center;overflow:hidden}
+.newsletter .title{color:var(--cream)}
+.newsletter p{max-width:560px;margin:0 auto 34px;color:rgba(255,248,242,.55);font-size:17px;line-height:1.8}
+.form{display:flex;max-width:480px;margin:0 auto}
+.form input{flex:1;min-width:0;padding:15px 18px;border:1px solid rgba(255,248,242,.18);border-right:0;background:rgba(255,248,242,.07);color:#fff;outline:none}
+.form button{padding:0 26px;border:0;background:var(--rose);color:#fff;font-family:"Noto Sans JP",sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase}
+footer{padding:44px clamp(24px,5vw,70px);background:#2d1f0e;color:rgba(255,248,242,.48);font-family:"Noto Sans JP",sans-serif;font-size:12px;letter-spacing:2px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .75s ease,transform .75s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:900px){
+  .nav-links{display:none}
+  .featured,.cards{grid-template-columns:1fr}
+  .culture-grid{grid-template-columns:1fr 1fr}
+  .jp-deco{display:none}
+}
+@media(max-width:560px){
+  .op-haiku{display:none}
+  .hero-actions,.form{flex-direction:column}
+  .culture-grid{grid-template-columns:1fr}
+  .stats{gap:26px}
+  .form input{border-right:1px solid rgba(255,248,242,.18);border-bottom:0}
+  .form button{min-height:48px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
 }
 </style>
 </head>
 <body>
-
-<!-- ═══════════════════════════════════════════
-     OPENING PAGE
-═══════════════════════════════════════════ -->
-<div id="opening-page">
-  <div class="op-sky"></div>
-  <div class="op-sun"></div>
-  <div class="op-mist-wrap">
-    <div class="op-mist"></div>
-    <div class="op-mist"></div>
-    <div class="op-mist"></div>
-  </div>
-
-  <canvas id="op-canvas"></canvas>
-
-  <!-- Trees SVG -->
-  <svg class="op-trees" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
+<div id="cursor-aura"></div>
+<div id="shuriken-cursor" aria-hidden="true">
+  <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <radialGradient id="bG1" cx="50%" cy="40%"><stop offset="0%" stop-color="#f7d4dc" stop-opacity="0.95"/><stop offset="60%" stop-color="#e8a0b0" stop-opacity="0.8"/><stop offset="100%" stop-color="#c8697a" stop-opacity="0.5"/></radialGradient>
-      <radialGradient id="bG2" cx="50%" cy="45%"><stop offset="0%" stop-color="#fce8ee" stop-opacity="0.9"/><stop offset="55%" stop-color="#f0b8c8" stop-opacity="0.75"/><stop offset="100%" stop-color="#d0788a" stop-opacity="0.45"/></radialGradient>
-      <radialGradient id="bG3" cx="45%" cy="42%"><stop offset="0%" stop-color="#f5e0e8" stop-opacity="0.9"/><stop offset="50%" stop-color="#e0a0b5" stop-opacity="0.8"/><stop offset="100%" stop-color="#b86070" stop-opacity="0.4"/></radialGradient>
-      <filter id="softBlur"><feGaussianBlur stdDeviation="1.5"/></filter>
-      <filter id="treeShadow"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#c8697a" flood-opacity="0.08"/></filter>
+      <radialGradient id="centerGem" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#f9c8d4"/><stop offset="100%" stop-color="#1a0d0d"/></radialGradient>
+      <linearGradient id="bladeA" x1="0" x2="1"><stop offset="0%" stop-color="#090404"/><stop offset="55%" stop-color="#281011"/><stop offset="100%" stop-color="#e8728a"/></linearGradient>
+      <linearGradient id="bladeB" x1="0" x2="1"><stop offset="0%" stop-color="#e8728a"/><stop offset="45%" stop-color="#251010"/><stop offset="100%" stop-color="#070303"/></linearGradient>
     </defs>
-    <!-- Left tree -->
-    <g filter="url(#treeShadow)">
-      <path d="M 148 400 C 150 360 144 320 150 280 C 154 250 148 230 152 200 C 156 175 150 155 155 130" stroke="#7a5040" stroke-width="14" fill="none" stroke-linecap="round" opacity="0.9"/>
-      <path d="M 152 200 C 130 185 110 170 85 158" stroke="#8a6050" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.8"/>
-      <path d="M 152 200 C 174 185 195 172 218 162" stroke="#8a6050" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.8"/>
-      <path d="M 152 165 C 135 148 118 135 100 122" stroke="#8a6050" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.75"/>
-      <path d="M 152 165 C 170 148 188 134 205 120" stroke="#8a6050" stroke-width="4.5" fill="none" stroke-linecap="round" opacity="0.75"/>
-      <path d="M 152 135 C 138 115 128 100 118 82" stroke="#8a6050" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.7"/>
-      <path d="M 152 135 C 168 115 178 98 190 80" stroke="#8a6050" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.7"/>
-      <path d="M 100 122 C 88 110 75 100 62 92" stroke="#9a7060" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.65"/>
-      <path d="M 85 158 C 72 145 58 136 44 128" stroke="#9a7060" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.65"/>
-      <path d="M 218 162 C 232 149 246 140 258 132" stroke="#9a7060" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.65"/>
-      <ellipse cx="148" cy="72" rx="70" ry="58" fill="url(#bG1)" opacity="0.88"/>
-      <ellipse cx="88" cy="90" rx="55" ry="46" fill="url(#bG2)" opacity="0.82"/>
-      <ellipse cx="205" cy="86" rx="52" ry="44" fill="url(#bG1)" opacity="0.8"/>
-      <ellipse cx="55" cy="118" rx="40" ry="33" fill="url(#bG2)" opacity="0.72"/>
-      <ellipse cx="255" cy="126" rx="38" ry="32" fill="url(#bG1)" opacity="0.7"/>
-      <ellipse cx="118" cy="55" rx="42" ry="35" fill="url(#bG2)" opacity="0.75"/>
-      <ellipse cx="182" cy="52" rx="40" ry="34" fill="url(#bG1)" opacity="0.72"/>
-      <ellipse cx="148" cy="35" rx="30" ry="26" fill="url(#bG2)" opacity="0.65"/>
-      <ellipse cx="148" cy="68" rx="45" ry="36" fill="url(#bG2)" opacity="0.45" filter="url(#softBlur)"/>
-      <ellipse cx="95" cy="85" rx="32" ry="26" fill="#fdf0f3" opacity="0.35" filter="url(#softBlur)"/>
-    </g>
-    <!-- Center tree -->
-    <g filter="url(#treeShadow)">
-      <path d="M 600 400 C 600 355 598 310 602 265 C 604 235 600 210 603 178 C 606 150 600 125 604 95" stroke="#5c3d2e" stroke-width="17" fill="none" stroke-linecap="round" opacity="0.95"/>
-      <path d="M 602 200 C 568 183 534 165 498 150" stroke="#7a5040" stroke-width="9" fill="none" stroke-linecap="round" opacity="0.85"/>
-      <path d="M 602 200 C 636 183 670 165 704 152" stroke="#7a5040" stroke-width="9" fill="none" stroke-linecap="round" opacity="0.85"/>
-      <path d="M 602 155 C 572 135 548 118 520 102" stroke="#7a5040" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.8"/>
-      <path d="M 602 155 C 632 135 656 118 682 102" stroke="#7a5040" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.8"/>
-      <path d="M 602 115 C 576 92 558 72 536 52" stroke="#7a5040" stroke-width="5.5" fill="none" stroke-linecap="round" opacity="0.75"/>
-      <path d="M 602 115 C 628 92 646 72 666 52" stroke="#7a5040" stroke-width="5.5" fill="none" stroke-linecap="round" opacity="0.75"/>
-      <path d="M 602 95 C 590 72 582 52 576 30" stroke="#8a6050" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.65"/>
-      <path d="M 602 95 C 614 72 622 52 628 30" stroke="#8a6050" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.65"/>
-      <path d="M 498 150 C 475 136 455 124 432 114" stroke="#9a7060" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.65"/>
-      <path d="M 520 102 C 498 85 480 70 460 56" stroke="#9a7060" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.6"/>
-      <path d="M 704 152 C 726 138 746 126 768 116" stroke="#9a7060" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.65"/>
-      <path d="M 682 102 C 704 85 722 70 740 56" stroke="#9a7060" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.6"/>
-      <ellipse cx="600" cy="60" rx="105" ry="75" fill="url(#bG2)" opacity="0.88"/>
-      <ellipse cx="600" cy="40" rx="75" ry="52" fill="url(#bG1)" opacity="0.82"/>
-      <ellipse cx="510" cy="90" rx="78" ry="60" fill="url(#bG2)" opacity="0.84"/>
-      <ellipse cx="690" cy="90" rx="75" ry="58" fill="url(#bG1)" opacity="0.82"/>
-      <ellipse cx="450" cy="118" rx="58" ry="45" fill="url(#bG2)" opacity="0.75"/>
-      <ellipse cx="750" cy="118" rx="56" ry="44" fill="url(#bG1)" opacity="0.73"/>
-      <ellipse cx="545" cy="50" rx="52" ry="40" fill="url(#bG1)" opacity="0.7"/>
-      <ellipse cx="655" cy="50" rx="52" ry="40" fill="url(#bG2)" opacity="0.7"/>
-      <ellipse cx="600" cy="55" rx="68" ry="48" fill="#fdf4f6" opacity="0.4" filter="url(#softBlur)"/>
-      <ellipse cx="515" cy="85" rx="48" ry="36" fill="#fce8ee" opacity="0.32" filter="url(#softBlur)"/>
-      <ellipse cx="685" cy="85" rx="48" ry="36" fill="#fce8ee" opacity="0.32" filter="url(#softBlur)"/>
-    </g>
-    <!-- Right tree -->
-    <g filter="url(#treeShadow)">
-      <path d="M 1055 400 C 1053 360 1058 318 1054 278 C 1050 250 1056 228 1052 198 C 1048 172 1054 152 1050 125" stroke="#7a5040" stroke-width="14" fill="none" stroke-linecap="round" opacity="0.9"/>
-      <path d="M 1053 198 C 1030 183 1008 170 982 158" stroke="#8a6050" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.8"/>
-      <path d="M 1053 198 C 1076 183 1098 170 1122 160" stroke="#8a6050" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.8"/>
-      <path d="M 1052 162 C 1034 146 1016 132 996 118" stroke="#8a6050" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.75"/>
-      <path d="M 1052 162 C 1070 146 1088 132 1108 118" stroke="#8a6050" stroke-width="4.5" fill="none" stroke-linecap="round" opacity="0.75"/>
-      <path d="M 1050 130 C 1036 110 1024 92 1012 75" stroke="#8a6050" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.7"/>
-      <path d="M 1050 130 C 1064 110 1076 92 1090 75" stroke="#8a6050" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.7"/>
-      <path d="M 982 158 C 966 145 952 133 936 123" stroke="#9a7060" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.65"/>
-      <path d="M 1122 160 C 1138 147 1152 136 1168 127" stroke="#9a7060" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.65"/>
-      <ellipse cx="1052" cy="68" rx="70" ry="57" fill="url(#bG3)" opacity="0.88"/>
-      <ellipse cx="988" cy="88" rx="55" ry="44" fill="url(#bG1)" opacity="0.82"/>
-      <ellipse cx="1116" cy="85" rx="52" ry="44" fill="url(#bG3)" opacity="0.8"/>
-      <ellipse cx="938" cy="116" rx="40" ry="32" fill="url(#bG1)" opacity="0.7"/>
-      <ellipse cx="1165" cy="120" rx="38" ry="31" fill="url(#bG3)" opacity="0.68"/>
-      <ellipse cx="1018" cy="50" rx="42" ry="34" fill="url(#bG1)" opacity="0.73"/>
-      <ellipse cx="1088" cy="48" rx="40" ry="33" fill="url(#bG3)" opacity="0.7"/>
-      <ellipse cx="1052" cy="32" rx="30" ry="25" fill="url(#bG1)" opacity="0.62"/>
-      <ellipse cx="1052" cy="64" rx="44" ry="35" fill="#fdf4f6" opacity="0.38" filter="url(#softBlur)"/>
-    </g>
+    <path d="M24 24 C19 20 18 9 24 2 C30 9 29 20 24 24Z" fill="url(#bladeA)"/>
+    <path d="M24 24 C28 19 39 18 46 24 C39 30 28 29 24 24Z" fill="url(#bladeB)"/>
+    <path d="M24 24 C29 28 30 39 24 46 C18 39 19 28 24 24Z" fill="url(#bladeA)"/>
+    <path d="M24 24 C20 29 9 30 2 24 C9 18 20 19 24 24Z" fill="url(#bladeB)"/>
+    <path d="M24 24 C21 19 22 11 28 5 C31 13 29 21 24 24Z" fill="#100707" opacity=".72"/>
+    <path d="M24 24 C29 21 37 22 43 28 C35 31 27 29 24 24Z" fill="#100707" opacity=".72"/>
+    <path d="M24 24 C27 29 26 37 20 43 C17 35 19 27 24 24Z" fill="#100707" opacity=".72"/>
+    <path d="M24 24 C19 27 11 26 5 20 C13 17 21 19 24 24Z" fill="#100707" opacity=".72"/>
+    <circle cx="24" cy="24" r="5.3" fill="url(#centerGem)"/>
+    <circle cx="22.5" cy="22.3" r="1" fill="#fff"/>
   </svg>
+</div>
 
+<div id="opening-page">
+  <div class="op-sun"></div>
+  <div class="op-mist"></div>
+  <canvas id="op-canvas"></canvas>
+  <div class="op-trees"></div>
   <div class="op-ground"></div>
   <div class="op-path"></div>
-
-  <!-- Brand badge -->
-  <div class="op-brand">
-    <span class="op-brand-kanji">日</span>
-    <span class="op-brand-text">GyaanHubb</span>
-  </div>
-
-  <!-- Scene -->
+  <div class="op-brand"><span>日</span><span>NihonLifestyle</span></div>
   <div class="op-scene">
-    <div class="op-title-wrap">
-      <div class="op-title-jp">桜の季節へようこそ</div>
-      <div class="op-title-main">Sakura</div>
-      <div class="op-title-sub">Season of Blossoms</div>
-    </div>
+    <div class="op-title-jp">桜の季節へようこそ</div>
+    <h1 class="op-title-main">NihonLifestyle</h1>
+    <div class="op-title-sub">Japan Culture & Lifestyle</div>
     <div class="op-divider"></div>
-    <div class="op-petals-line">🌸 &nbsp; 🌸 &nbsp; 🌸</div>
-    <button class="op-enter-btn" id="opEnterBtn">
-      <i class="blossom">🌸</i> Enter <i class="blossom">🌸</i>
-    </button>
+    <div class="op-petals-line">Culture · Travel · Tradition</div>
+    <button class="op-enter-btn" id="opEnterBtn">Enter</button>
   </div>
-
-  <!-- Haiku -->
   <div class="op-haiku">
     <p>花びらが舞う</p>
-    <p>Petals drift in silence</p>
-    <p>Spring has found its way</p>
-  </div>
-
-  <!-- Transition overlay -->
-  <div class="op-t-overlay" id="opTOverlay">
-    <canvas id="op-t-canvas"></canvas>
-    <div class="op-t-text">
-      <span>Welcome</span>
-      <small>ようこそ &nbsp;·&nbsp; entering &nbsp;·&nbsp; 🌸</small>
-    </div>
+    <p>A quiet step appears</p>
+    <p>Spring opens the gate</p>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     MAIN SITE
-═══════════════════════════════════════════ -->
-<div id="main-site">
-  <canvas id="sakura-canvas"></canvas>
-
-  <!-- SHURIKEN CURSOR -->
-  <div id="cursor-aura"></div>
-  <div id="shuriken-cursor">
-    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <radialGradient id="sc-center" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#c8697a"/>
-          <stop offset="100%" stop-color="#1a0a08"/>
-        </radialGradient>
-        <radialGradient id="sc-blade1" cx="50%" cy="20%" r="70%">
-          <stop offset="0%" stop-color="#2a1010"/>
-          <stop offset="60%" stop-color="#0d0505"/>
-          <stop offset="100%" stop-color="#050202"/>
-        </radialGradient>
-        <radialGradient id="sc-blade2" cx="50%" cy="20%" r="70%">
-          <stop offset="0%" stop-color="#3a1515"/>
-          <stop offset="60%" stop-color="#150808"/>
-          <stop offset="100%" stop-color="#070303"/>
-        </radialGradient>
-        <filter id="sc-glow">
-          <feGaussianBlur stdDeviation="0.8" result="blur"/>
-          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-        </filter>
-      </defs>
-      <!-- 4 main blade petals -->
-      <path d="M24 24 C20 20 18 10 24 2 C30 10 28 20 24 24Z" fill="url(#sc-blade1)" filter="url(#sc-glow)"/>
-      <path d="M24 24 C28 20 38 18 46 24 C38 30 28 28 24 24Z" fill="url(#sc-blade2)" filter="url(#sc-glow)"/>
-      <path d="M24 24 C28 28 30 38 24 46 C18 38 20 28 24 24Z" fill="url(#sc-blade1)" filter="url(#sc-glow)"/>
-      <path d="M24 24 C20 28 10 30 2 24 C10 18 20 20 24 24Z" fill="url(#sc-blade2)" filter="url(#sc-glow)"/>
-      <!-- 4 secondary blades (45° offset) -->
-      <path d="M24 24 C21 20 21 11 26 4  C31 12 29 21 24 24Z" fill="#1a0808" opacity="0.6"/>
-      <path d="M24 24 C28 21 37 21 44 26 C36 31 27 29 24 24Z" fill="#1a0808" opacity="0.6"/>
-      <path d="M24 24 C27 28 27 37 22 44 C17 36 19 27 24 24Z" fill="#1a0808" opacity="0.6"/>
-      <path d="M24 24 C20 27 11 27 4  22 C12 17 21 19 24 24Z" fill="#1a0808" opacity="0.6"/>
-      <!-- Blade edge shimmer -->
-      <line x1="24" y1="24" x2="24" y2="4"  stroke="rgba(200,105,122,0.2)" stroke-width="0.7"/>
-      <line x1="24" y1="24" x2="44" y2="24" stroke="rgba(200,105,122,0.2)" stroke-width="0.7"/>
-      <line x1="24" y1="24" x2="24" y2="44" stroke="rgba(200,105,122,0.2)" stroke-width="0.7"/>
-      <line x1="24" y1="24" x2="4"  y2="24" stroke="rgba(200,105,122,0.2)" stroke-width="0.7"/>
-      <!-- Center gem -->
-      <circle cx="24" cy="24" r="4.5" fill="url(#sc-center)"/>
-      <circle cx="24" cy="24" r="2.2" fill="rgba(249,200,212,0.9)"/>
-      <circle cx="22.5" cy="22.5" r="0.9" fill="rgba(255,255,255,0.95)"/>
-    </svg>
+<div id="ninja-welcome" aria-hidden="true">
+  <canvas id="ninja-canvas"></canvas>
+  <div class="moon"></div>
+  <div class="ninja-card">
+    <div class="ninja-figure" aria-hidden="true">
+      <div class="ninja-shadow"></div>
+      <div class="ninja-sword"></div>
+      <div class="ninja-head"><span class="ninja-eye left"></span><span class="ninja-eye right"></span></div>
+      <div class="ninja-body"></div>
+      <div class="ninja-sash"></div>
+    </div>
+    <div class="ninja-title">Welcome</div>
+    <div class="ninja-line"></div>
+    <div class="ninja-sub">ようこそ · peaceful ninja welcome</div>
   </div>
+</div>
 
-  <!-- NAV -->
+<main id="main-site">
+  <canvas id="sakura-canvas"></canvas>
   <nav>
-    <a href="https://gyaanhubb.com/category/blog/japan/" class="nav-logo">
-      <div class="logo-kanji">日</div>
-      <div>
-        <div class="logo-text">GyaanHubb</div>
-        <span class="logo-sub">Japan & Culture</span>
-      </div>
+    <a href="#hero" class="nav-logo">
+      <span class="logo-kanji">日</span>
+      <span><span class="logo-text">NihonLifestyle</span><span class="logo-sub">Japan Culture Blog</span></span>
     </a>
     <ul class="nav-links">
       <li><a href="#featured">Featured</a></li>
       <li><a href="#articles">Articles</a></li>
       <li><a href="#culture">Culture</a></li>
-      <li><a href="#latest">Latest</a></li>
-      <li><a href="https://gyaanhubb.com/about-us-page/" target="_blank">About</a></li>
-      <li><a href="https://gyaanhubb.com" target="_blank" class="nav-cta">Main Site</a></li>
+      <li><a href="#newsletter" class="nav-cta">Join</a></li>
     </ul>
-    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
   </nav>
 
-  <!-- MOBILE MENU -->
-  <div class="mobile-menu" id="mobileMenu">
-    <button class="mobile-close" id="mobileClose">✕</button>
-    <a href="#featured" onclick="closeMobile()">Featured</a>
-    <a href="#articles" onclick="closeMobile()">Articles</a>
-    <a href="#culture" onclick="closeMobile()">Culture</a>
-    <a href="#latest" onclick="closeMobile()">Latest</a>
-    <a href="https://gyaanhubb.com/about-us-page/" target="_blank">About</a>
-    <a href="https://gyaanhubb.com" target="_blank">Main Site →</a>
-  </div>
-
-  <!-- HERO -->
   <section id="hero">
-    <div class="deco-circle deco1"></div>
-    <div class="deco-circle deco2"></div>
-    <div class="deco-circle deco3"></div>
-    <div class="jp-deco">日本文化・歴史・魂・知識・伝統・美</div>
-    <svg class="mountain-svg" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M400 20L700 400H100L400 20Z" fill="var(--ink)"/>
-      <path d="M400 20L460 120L340 120L400 20Z" fill="white" opacity="0.6"/>
-      <rect x="0" y="380" width="800" height="20" fill="var(--ink)" opacity="0.3"/>
-    </svg>
-    <div class="hero-content">
-      <div class="hero-season"><div class="season-line"></div>文化 · Knowledge · 知識</div>
+    <div class="jp-deco">日本文化・歴史・魂・知識</div>
+    <div class="mount-fuji"></div>
+    <div class="hero-content reveal">
+      <div class="hero-kicker">Culture · Knowledge · 知識</div>
       <div class="hero-jp">日本文化・歴史</div>
-      <h1 class="hero-title">
-        <span class="block">Japan</span>
-        <span class="block"><em>Unleashed</em></span>
-      </h1>
-      <p class="hero-desc">Explore the timeless depth of Japanese culture, history, and philosophy — crafted for curious minds who seek more than the surface.</p>
-      <div class="hero-btns">
-        <a href="#featured" class="btn-ink">Read Articles</a>
-        <a href="#culture" class="btn-outline">Explore Culture</a>
+      <h2 class="hero-title"><span>Nihon</span><span><em>Lifestyle</em></span></h2>
+      <p class="hero-desc">Explore the timeless depth of Japanese culture, history, and philosophy, crafted for curious minds who seek more than the surface.</p>
+      <div class="hero-actions">
+        <a href="#featured" class="btn dark">Read Articles</a>
+        <a href="#culture" class="btn light">Explore Culture</a>
       </div>
-      <div class="hero-stats">
-        <div><span class="hstat-num">48+</span><span class="hstat-label">Articles</span></div>
-        <div><span class="hstat-num">12</span><span class="hstat-label">Topics</span></div>
-        <div><span class="hstat-num">100%</span><span class="hstat-label">Free</span></div>
+      <div class="stats">
+        <div class="stat"><strong>48+</strong><span>Articles</span></div>
+        <div class="stat"><strong>12</strong><span>Topics</span></div>
+        <div class="stat"><strong>100%</strong><span>Free</span></div>
       </div>
     </div>
   </section>
 
-  <div class="divider"><div class="div-line"></div><div class="div-sym">✿</div><div class="div-line"></div></div>
-
-  <!-- FEATURED -->
-  <section id="featured" class="sec-pad">
-    <div class="sec-label">Featured Story</div>
-    <div class="sec-title">The Article <em>Everyone's Reading</em></div>
-    <div class="sec-jp">注目記事</div>
-    <div class="featured-wrap">
-      <div class="featured-img">
-        <svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <linearGradient id="sky1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fde8f0"/><stop offset="100%" stop-color="#f9c8d4"/></linearGradient>
-            <linearGradient id="ground1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c8e6c9"/><stop offset="100%" stop-color="#a5d6a7"/></linearGradient>
-          </defs>
-          <rect width="600" height="380" fill="url(#sky1)"/>
-          <polygon points="300,40 450,240 150,240" fill="white" opacity="0.55"/>
-          <polygon points="300,40 335,105 265,105" fill="white" opacity="0.88"/>
-          <rect x="0" y="240" width="600" height="140" fill="url(#ground1)"/>
-          <rect x="263" y="182" width="10" height="80" fill="#c0392b"/>
-          <rect x="327" y="182" width="10" height="80" fill="#c0392b"/>
-          <rect x="253" y="180" width="94" height="12" rx="2" fill="#c0392b"/>
-          <rect x="258" y="193" width="84" height="8" rx="2" fill="#c0392b"/>
-          <rect x="90" y="170" width="10" height="100" fill="#8b6340"/>
-          <ellipse cx="95" cy="148" rx="46" ry="38" fill="#f9c8d4" opacity="0.88"/>
-          <ellipse cx="115" cy="163" rx="32" ry="25" fill="#f4a7b9" opacity="0.72"/>
-          <rect x="490" y="175" width="10" height="95" fill="#8b6340"/>
-          <ellipse cx="495" cy="152" rx="42" ry="35" fill="#f9c8d4" opacity="0.85"/>
-          <circle cx="160" cy="215" r="5" fill="#f9c8d4" opacity="0.65"/>
-          <circle cx="220" cy="195" r="4" fill="#f4a7b9" opacity="0.55"/>
-          <circle cx="180" cy="245" r="6" fill="#f9c8d4" opacity="0.5"/>
-          <circle cx="400" cy="210" r="4" fill="#f4a7b9" opacity="0.55"/>
-          <circle cx="450" cy="230" r="5" fill="#f9c8d4" opacity="0.5"/>
-          <circle cx="490" cy="70" r="42" fill="white" opacity="0.55"/>
-          <circle cx="490" cy="70" r="28" fill="white" opacity="0.38"/>
-          <ellipse cx="280" cy="325" rx="8" ry="20" fill="#d4a76a" opacity="0.7"/>
-          <circle cx="280" cy="300" r="8" fill="#d4a76a" opacity="0.7"/>
-          <ellipse cx="310" cy="325" rx="8" ry="20" fill="#d4a76a" opacity="0.7"/>
-          <circle cx="310" cy="300" r="8" fill="#d4a76a" opacity="0.7"/>
-        </svg>
-      </div>
+  <section id="featured" class="section">
+    <div class="label reveal">Featured Story</div>
+    <h2 class="title reveal">The Article <em>Everyone's Reading</em></h2>
+    <div class="jp-small reveal">注目記事</div>
+    <article class="featured reveal">
+      <div class="featured-art"></div>
       <div class="featured-body">
-        <div class="featured-tag">Latest Article · May 2026</div>
-        <div class="featured-title">How Japanese Kids Learn Civic Sense From Kindergarten</div>
-        <div class="featured-excerpt">A story about brooms, cherry blossoms, and why Japan might be doing something the rest of us completely missed. Discover the philosophy behind Japan's legendary civic pride — it all begins at age five.</div>
-        <div class="featured-meta">
-          <span>GyaanHubb</span><div class="meta-dot"></div>
-          <span>May 25, 2026</span><div class="meta-dot"></div>
-          <span>11 min read</span>
-        </div>
-        <div style="margin-top:8px;"><a href="https://gyaanhubb.com/japanese-kids-civic-sense-kindergarten-upbringing/" class="btn-ink" style="font-size:13px;padding:12px 28px;">Read Full Article →</a></div>
+        <div class="tag">Latest Article · May 2026</div>
+        <h3 class="featured-title">How Japanese Kids Learn Civic Sense From Kindergarten</h3>
+        <p class="excerpt">A story about brooms, cherry blossoms, and why Japan might be doing something the rest of us completely missed. The philosophy behind civic pride begins early.</p>
+        <a class="btn dark" href="https://gyaanhubb.com/japanese-kids-civic-sense-kindergarten-upbringing/">Read Full Article</a>
       </div>
+    </article>
+  </section>
+
+  <section id="articles" class="section">
+    <div class="label reveal">Power Articles</div>
+    <h2 class="title reveal">Stories That <em>Illuminate</em></h2>
+    <div class="jp-small reveal">特集記事</div>
+    <div class="cards">
+      <article class="card reveal"><div class="card-img"></div><div class="card-body"><div class="tag">Japan Culture</div><h3 class="card-title">Why Japan Produces the World's Best Drivers</h3><p>Discipline, safety, and a rigorous test culture shape a calm relationship with the road.</p></div></article>
+      <article class="card reveal"><div class="card-img"></div><div class="card-body"><div class="tag">Food</div><h3 class="card-title">15 Best Foods Indians Can Eat in Japan</h3><p>A travel-friendly guide to eating well, avoiding surprises, and enjoying Japanese cuisine.</p></div></article>
+      <article class="card reveal"><div class="card-img"></div><div class="card-body"><div class="tag">Philosophy</div><h3 class="card-title">Ikigai and the Quiet Shape of Purpose</h3><p>A gentle look at how meaning, work, delight, and community meet in daily life.</p></div></article>
     </div>
   </section>
 
-  <div class="divider"><div class="div-line"></div><div class="div-sym">⛩</div><div class="div-line"></div></div>
-
-  <!-- CATEGORIES -->
-  <section id="categories" class="sec-pad">
-    <div class="sec-label">Browse Topics</div>
-    <div class="sec-title">Choose Your <em>Path</em></div>
-    <div class="sec-jp">カテゴリ</div>
-    <div class="cat-grid">
-      <div class="cat-card"><span class="cat-icon">🌸</span><div class="cat-name">Culture & Traditions</div><div class="cat-count">12 Articles</div></div>
-      <div class="cat-card"><span class="cat-icon">🍜</span><div class="cat-name">Food & Cuisine</div><div class="cat-count">8 Articles</div></div>
-      <div class="cat-card"><span class="cat-icon">🏯</span><div class="cat-name">History & Temples</div><div class="cat-count">10 Articles</div></div>
-      <div class="cat-card"><span class="cat-icon">🎌</span><div class="cat-name">Modern Japan</div><div class="cat-count">9 Articles</div></div>
-      <div class="cat-card"><span class="cat-icon">🎎</span><div class="cat-name">Festivals & Art</div><div class="cat-count">7 Articles</div></div>
-      <div class="cat-card"><span class="cat-icon">⛩️</span><div class="cat-name">Spirituality</div><div class="cat-count">6 Articles</div></div>
-    </div>
-  </section>
-
-  <!-- ARTICLES -->
-  <section id="articles" class="sec-pad" style="padding-top:40px;">
-    <div class="sec-label">Power Articles</div>
-    <div class="sec-title">Stories That <em>Illuminate</em></div>
-    <div class="sec-jp">特集記事</div>
-    <div class="articles-grid">
-      <div class="article-card">
-        <div class="card-img"><div class="card-img-inner">
-          <svg viewBox="0 0 400 200" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e3f2fd"/><stop offset="100%" stop-color="#bbdefb"/></linearGradient></defs>
-            <rect width="400" height="200" fill="url(#g1)"/><rect x="0" y="140" width="400" height="60" fill="#c8e6c9"/>
-            <rect x="0" y="148" width="400" height="14" fill="#90a4ae" opacity="0.6"/>
-            <rect x="50" y="153" width="60" height="3" fill="white" opacity="0.6" rx="2"/>
-            <rect x="160" y="153" width="60" height="3" fill="white" opacity="0.6" rx="2"/>
-            <rect x="270" y="153" width="60" height="3" fill="white" opacity="0.6" rx="2"/>
-            <rect x="160" y="128" width="80" height="22" rx="4" fill="#37474f"/>
-            <rect x="170" y="118" width="60" height="14" rx="3" fill="#455a64"/>
-            <circle cx="175" cy="152" r="8" fill="#212121"/><circle cx="225" cy="152" r="8" fill="#212121"/>
-            <circle cx="175" cy="152" r="4" fill="#757575"/><circle cx="225" cy="152" r="4" fill="#757575"/>
-            <polygon points="200,10 310,130 90,130" fill="white" opacity="0.3"/>
-            <circle cx="340" cy="50" r="30" fill="white" opacity="0.45"/>
-          </svg>
-        </div></div>
-        <div class="card-body">
-          <div class="card-cat">Japan Culture</div>
-          <div class="card-title">Why Japan Produces the World's Best Drivers</div>
-          <div class="card-excerpt">Japan is famous for discipline and safety. Discover how their legendary driving culture begins with the world's most rigorous test.</div>
-          <div class="card-meta"><span>6 min read</span><div class="meta-dot"></div><span>2026</span></div>
-          <div style="margin-top:14px;"><a href="https://gyaanhubb.com/japan-driving-test-worlds-best-drivers/" class="btn-outline" style="font-size:12px;padding:9px 20px;">Read Article →</a></div>
-        </div>
-      </div>
-      <div class="article-card">
-        <div class="card-img"><div class="card-img-inner">
-          <svg viewBox="0 0 400 200" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <rect width="400" height="200" fill="#fff3e0"/>
-            <rect x="0" y="150" width="400" height="50" fill="#ffe0b2" opacity="0.5"/>
-            <ellipse cx="200" cy="140" rx="90" ry="22" fill="#d4a76a"/>
-            <path d="M110 140 Q110 195 200 198 Q290 195 290 140" fill="#8b6340"/>
-            <path d="M165 125 Q162 108 166 95 Q170 82 166 69" stroke="rgba(255,255,255,0.5)" stroke-width="2.5" fill="none"/>
-            <path d="M200 120 Q197 103 201 90 Q205 77 201 64" stroke="rgba(255,255,255,0.5)" stroke-width="2.5" fill="none"/>
-            <path d="M235 125 Q232 108 236 95 Q240 82 236 69" stroke="rgba(255,255,255,0.5)" stroke-width="2.5" fill="none"/>
-            <line x1="270" y1="100" x2="310" y2="155" stroke="#8b6340" stroke-width="4" stroke-linecap="round"/>
-            <line x1="280" y1="98" x2="318" y2="153" stroke="#8b6340" stroke-width="4" stroke-linecap="round"/>
-            <rect x="30" y="40" width="4" height="80" fill="#8b6340"/>
-            <rect x="34" y="40" width="40" height="28" fill="#fde8f0"/>
-            <circle cx="54" cy="54" r="10" fill="#c0392b"/>
-          </svg>
-        </div></div>
-        <div class="card-body">
-          <div class="card-cat">Food</div>
-          <div class="card-title">15 Best Foods Indians Can Eat in Japan</div>
-          <div class="card-excerpt">Planning a trip from India to Japan? Here's exactly what to eat, what to avoid, and how to navigate Japanese food culture.</div>
-          <div class="card-meta"><span>8 min read</span><div class="meta-dot"></div><span>2026</span></div>
-          <div style="margin-top:14px;"><a href="https://gyaanhubb.com/15-best-foods-indians-can-eat-in-japan/" class="btn-outline" style="font-size:12px;padding:9px 20px;">Read Article →</a></div>
-        </div>
-      </div>
-      <div class="article-card">
-        <div class="card-img"><div class="card-img-inner">
-          <svg viewBox="0 0 400 200" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="g3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fce4ec"/><stop offset="50%" stop-color="#bbdefb"/><stop offset="100%" stop-color="#c8e6c9"/></linearGradient></defs>
-            <rect width="400" height="200" fill="url(#g3)"/>
-            <ellipse cx="110" cy="110" rx="55" ry="80" fill="#c0392b" opacity="0.3"/>
-            <circle cx="110" cy="80" r="22" fill="#c0392b" opacity="0.5"/>
-            <ellipse cx="290" cy="108" rx="55" ry="80" fill="#e74c3c" opacity="0.25"/>
-            <circle cx="290" cy="78" r="22" fill="#ffca28" opacity="0.6"/>
-            <line x1="200" y1="10" x2="200" y2="190" stroke="rgba(26,18,8,0.15)" stroke-width="2" stroke-dasharray="6,4"/>
-            <ellipse cx="200" cy="100" rx="28" ry="28" fill="rgba(232,114,138,0.15)"/>
-            <text x="200" y="108" text-anchor="middle" font-family="Georgia" font-size="18" font-weight="bold" fill="#c0392b" opacity="0.7">VS</text>
-          </svg>
-        </div></div>
-        <div class="card-body">
-          <div class="card-cat">Rivalry</div>
-          <div class="card-title">Japan vs China: Asia's Biggest Rivalry in 2025</div>
-          <div class="card-excerpt">Centuries of conflict, cultural exchange, and geopolitical tension. The full story behind Asia's most complex relationship.</div>
-          <div class="card-meta"><span>8 min read</span><div class="meta-dot"></div><span>2025</span></div>
-          <div style="margin-top:14px;"><a href="https://gyaanhubb.com/japan-vs-china-asia-rivalry-2025/" class="btn-outline" style="font-size:12px;padding:9px 20px;">Read Article →</a></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CULTURE STRIP -->
-  <section id="culture">
-    <div class="sec-pad" style="padding-bottom:0;">
-      <div class="sec-label">Explore</div>
-      <div class="sec-title">Four Pillars of <em>Japanese Soul</em></div>
-      <div class="sec-jp">日本の四柱</div>
-    </div>
+  <section id="culture" class="section culture">
+    <div class="label reveal">Explore</div>
+    <h2 class="title reveal">Four Pillars of <em>Japanese Soul</em></h2>
+    <div class="jp-small reveal">日本の四柱</div>
     <div class="culture-grid">
-      <div class="culture-item"><div class="culture-bg cb1"></div><div class="culture-overlay"><div class="culture-jp">桜</div><div class="culture-name">Sakura</div><div class="culture-desc">Cherry Blossom Culture</div></div></div>
-      <div class="culture-item"><div class="culture-bg cb2"></div><div class="culture-overlay"><div class="culture-jp">道</div><div class="culture-name">Bushido</div><div class="culture-desc">Way of the Warrior</div></div></div>
-      <div class="culture-item"><div class="culture-bg cb3"></div><div class="culture-overlay"><div class="culture-jp">茶</div><div class="culture-name">Chado</div><div class="culture-desc">The Way of Tea</div></div></div>
-      <div class="culture-item"><div class="culture-bg cb4"></div><div class="culture-overlay"><div class="culture-jp">禅</div><div class="culture-name">Zen</div><div class="culture-desc">Mindfulness & Peace</div></div></div>
+      <div class="culture-item reveal"><div class="culture-jp">桜</div><div class="culture-copy"><div class="culture-name">Sakura</div><div class="culture-desc">Cherry Blossom Culture</div></div></div>
+      <div class="culture-item reveal"><div class="culture-jp">道</div><div class="culture-copy"><div class="culture-name">Bushido</div><div class="culture-desc">Way of the Warrior</div></div></div>
+      <div class="culture-item reveal"><div class="culture-jp">茶</div><div class="culture-copy"><div class="culture-name">Chado</div><div class="culture-desc">The Way of Tea</div></div></div>
+      <div class="culture-item reveal"><div class="culture-jp">禅</div><div class="culture-copy"><div class="culture-name">Zen</div><div class="culture-desc">Mindfulness & Peace</div></div></div>
     </div>
   </section>
 
-  <!-- FACTS -->
-  <section id="facts">
-    <div class="sec-label">Scouter Readings</div>
-    <div class="sec-title">Japan Fast <em>Facts</em></div>
-    <div class="sec-jp">日本について</div>
-    <div class="facts-grid">
-      <div class="fact-card"><div class="fact-number">125M+</div><div class="fact-label">Population</div><div class="fact-desc">One of the world's highest life expectancies — average 84 years — born from discipline, diet, and community.</div></div>
-      <div class="fact-card"><div class="fact-number">6,852</div><div class="fact-label">Islands</div><div class="fact-desc">Japan is an archipelago of thousands of islands, with four main ones holding 98% of the population.</div></div>
-      <div class="fact-card"><div class="fact-number">3rd</div><div class="fact-label">World Economy</div><div class="fact-desc">Japan holds the third largest economy on Earth, famous for innovation, engineering, and exports.</div></div>
-      <div class="fact-card"><div class="fact-number">2000+</div><div class="fact-label">Years of History</div><div class="fact-desc">Japanese civilisation dates back over two millennia with a continuous imperial tradition unlike any other.</div></div>
-      <div class="fact-card"><div class="fact-number">80,000</div><div class="fact-label">Shrines & Temples</div><div class="fact-desc">Japan is home to over 80,000 Shinto shrines and Buddhist temples — more than any country on earth.</div></div>
-      <div class="fact-card"><div class="fact-number">#1</div><div class="fact-label">Safest Country</div><div class="fact-desc">Japan consistently ranks among the world's safest nations, with crime rates that rival small European towns.</div></div>
-    </div>
+  <section id="newsletter" class="section newsletter">
+    <div class="label reveal">Newsletter · 便り</div>
+    <h2 class="title reveal">Power Up Your <em>Knowledge</em></h2>
+    <p class="reveal">One beautifully written article on Japan every week. No noise, just culture, history, and quiet wisdom from the East.</p>
+    <form class="form reveal" onsubmit="return false">
+      <input type="email" placeholder="your@email.com" aria-label="Email address">
+      <button type="submit">Subscribe</button>
+    </form>
   </section>
-
-  <!-- QUOTE -->
-  <section id="quote">
-    <div class="quote-jp-bg">美</div>
-    <div class="quote-text">"The Japanese have perfected the art of noticing — noticing beauty, noticing each other, noticing the precise moment when a cherry blossom reaches its peak."</div>
-    <div class="quote-src">— GyaanHubb · Japan & Culture Edition</div>
-  </section>
-
-  <!-- LATEST -->
-  <section id="latest" class="sec-pad">
-    <div class="sec-label">All Articles</div>
-    <div class="sec-title">Latest from <em>GyaanHubb</em></div>
-    <div class="sec-jp">最新記事</div>
-    <div class="latest-list">
-      <a href="https://gyaanhubb.com/japanese-kids-civic-sense-kindergarten-upbringing/" style="text-decoration:none;color:inherit;">
-        <div class="latest-item"><div class="latest-num">01</div><div><div class="latest-cat">Japan · Education</div><div class="latest-title">How Japanese Kids Learn Civic Sense From Kindergarten</div></div><div class="latest-date">May 2026</div></div>
-      </a>
-      <a href="https://gyaanhubb.com/japan-driving-test-worlds-best-drivers/" style="text-decoration:none;color:inherit;">
-        <div class="latest-item"><div class="latest-num">02</div><div><div class="latest-cat">Japan · Culture</div><div class="latest-title">Why Japan Produces the World's Best Drivers</div></div><div class="latest-date">Apr 2026</div></div>
-      </a>
-      <a href="https://gyaanhubb.com/15-best-foods-indians-can-eat-in-japan/" style="text-decoration:none;color:inherit;">
-        <div class="latest-item"><div class="latest-num">03</div><div><div class="latest-cat">Food · Travel</div><div class="latest-title">15 Best Foods Indians Can Eat in Japan</div></div><div class="latest-date">Apr 2026</div></div>
-      </a>
-      <a href="https://gyaanhubb.com/japan-vs-china-asia-rivalry-2025/" style="text-decoration:none;color:inherit;">
-        <div class="latest-item"><div class="latest-num">04</div><div><div class="latest-cat">Geopolitics · Asia</div><div class="latest-title">Japan vs China: Asia's Biggest Rivalry in 2025</div></div><div class="latest-date">Mar 2026</div></div>
-      </a>
-      <a href="https://gyaanhubb.com/category/blog/japan/" style="text-decoration:none;color:inherit;">
-        <div class="latest-item"><div class="latest-num">05</div><div><div class="latest-cat">Philosophy · Japan</div><div class="latest-title">Ikigai — The Japanese Secret to a Life Worth Living</div></div><div class="latest-date">Feb 2026</div></div>
-      </a>
-      <a href="https://gyaanhubb.com/category/blog/japan/" style="text-decoration:none;color:inherit;">
-        <div class="latest-item"><div class="latest-num">06</div><div><div class="latest-cat">Art · Japan</div><div class="latest-title">Kintsugi — Mending Broken Things with Gold</div></div><div class="latest-date">Jan 2026</div></div>
-      </a>
-    </div>
-  </section>
-
-  <!-- NEWSLETTER -->
-  <section id="newsletter">
-    <div class="nl-bg-jp">日</div>
-    <div class="nl-inner">
-      <div class="nl-tag">✿ Newsletter · 便り</div>
-      <div class="nl-title">Power Up Your<br><em>Knowledge</em></div>
-      <div class="nl-desc">One beautifully written article on Japan, every week. No noise. Just culture, history, and quiet wisdom from the East.</div>
-      <form class="nl-form" onsubmit="return false;">
-        <input class="nl-input" type="email" placeholder="your@email.com">
-        <button class="nl-btn" type="submit">Subscribe</button>
-      </form>
-      <p style="margin-top:16px;font-family:'Noto Sans JP',sans-serif;font-size:11px;letter-spacing:2px;color:rgba(253,248,242,0.2);">No spam · Unsubscribe anytime</p>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div style="display:flex;align-items:center;gap:14px;">
-          <div class="logo-kanji" style="font-size:36px;">日</div>
-          <div>
-            <div class="logo-text" style="color:rgba(253,248,242,0.7);">GyaanHubb</div>
-            <span class="logo-sub">Japan & Culture</span>
-          </div>
-        </div>
-        <div class="footer-tagline">Exploring the beauty, wisdom, and stories of Japanese civilisation — one article at a time. Knowledge is the greatest journey.</div>
-      </div>
-      <div class="footer-col"><h4>Japan</h4><ul><li><a href="https://gyaanhubb.com/category/blog/japan/">All Japan Articles</a></li><li><a href="https://gyaanhubb.com/japanese-kids-civic-sense-kindergarten-upbringing/">Education</a></li><li><a href="https://gyaanhubb.com/japan-driving-test-worlds-best-drivers/">Culture</a></li><li><a href="https://gyaanhubb.com/15-best-foods-indians-can-eat-in-japan/">Food & Travel</a></li></ul></div>
-      <div class="footer-col"><h4>Site</h4><ul><li><a href="https://gyaanhubb.com/category/blog/">Blog</a></li><li><a href="https://gyaanhubb.com/category/world/">World News</a></li><li><a href="https://gyaanhubb.com/about-us-page/">About Us</a></li><li><a href="https://gyaanhubb.com/%f0%9f%93%9e-contact-us/">Contact</a></li></ul></div>
-      <div class="footer-col"><h4>Legal</h4><ul><li><a href="https://gyaanhubb.com/privacy-policy/">Privacy Policy</a></li><li><a href="https://gyaanhubb.com/terms-and-conditions/">Terms</a></li><li><a href="https://gyaanhubb.com/disclaimer-page/">Disclaimer</a></li></ul></div>
-    </div>
-    <div class="footer-bottom">
-      <div class="footer-copy">© 2026 GyaanHubb · Japan & Culture · All rights reserved</div>
-      <div class="footer-jp">日本語 · 知識</div>
-    </div>
-  </footer>
-</div><!-- end #main-site -->
+  <footer><span>© 2026 NihonLifestyle · Japan Culture Blog</span><span>日本語 · 知識</span></footer>
+</main>
 
 <script>
-/* ══════════════════════════════════════════
-   OPENING PAGE — PETAL ENGINE
-══════════════════════════════════════════ */
-const opCanvas = document.getElementById('op-canvas');
-const opCtx = opCanvas.getContext('2d');
-function opResize(){ opCanvas.width = innerWidth; opCanvas.height = innerHeight; }
-opResize();
-window.addEventListener('resize', opResize);
+const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-function drawPetal(ctx, x, y, size, rot, hue, alpha){
+function resizeCanvas(canvas){
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  canvas.width = Math.floor(innerWidth * dpr);
+  canvas.height = Math.floor(innerHeight * dpr);
+  canvas.style.width = innerWidth + "px";
+  canvas.style.height = innerHeight + "px";
+  const ctx = canvas.getContext("2d");
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  return ctx;
+}
+
+function drawPetal(ctx,x,y,size,rot,color,alpha=1){
   ctx.save();
   ctx.globalAlpha = alpha;
-  ctx.translate(x, y);
+  ctx.translate(x,y);
   ctx.rotate(rot);
-  for(let i=0;i<5;i++){
-    const a = (i/5)*Math.PI*2 - Math.PI/2;
-    const bx = Math.cos(a)*size*0.55, by = Math.sin(a)*size*0.55;
-    ctx.save();
-    ctx.translate(bx, by);
-    ctx.rotate(a);
-    ctx.scale(1, 0.55);
-    ctx.beginPath();
-    ctx.ellipse(0, 0, size*0.48, size*0.3, 0, 0, Math.PI*2);
-    ctx.fillStyle = `hsl(${hue},70%,${78+Math.random()*10}%)`;
-    ctx.fill();
-    ctx.restore();
-  }
+  ctx.fillStyle = color;
   ctx.beginPath();
-  ctx.arc(0, 0, size*0.18, 0, Math.PI*2);
-  ctx.fillStyle = `hsl(${hue+10},60%,92%)`;
+  ctx.ellipse(0,-size*.4,size*.36,size*.72,0,0,Math.PI*2);
+  ctx.fill();
+  ctx.fillStyle = "rgba(255,255,255,.34)";
+  ctx.beginPath();
+  ctx.ellipse(-size*.08,-size*.62,size*.12,size*.24,-.25,0,Math.PI*2);
   ctx.fill();
   ctx.restore();
 }
 
-class SakuraPetal{
-  constructor(init=false){ this.reset(init); }
-  reset(init=false){
-    this.x = Math.random()*opCanvas.width;
-    this.y = init ? Math.random()*(-opCanvas.height*1.3) : -(20+Math.random()*40);
-    this.vy = 0.5+Math.random()*1.4;
-    this.vx = (Math.random()-0.5)*0.8;
+class Petal{
+  constructor(canvas, burst=false, x=0, y=0){
+    this.canvas = canvas;
+    this.colors = ["#f9c8d4","#f4a7b9","#fde8f0","#f8bbd0","#e8728a"];
+    this.reset(burst,x,y);
+  }
+  reset(burst=false,x=0,y=0){
+    this.x = burst ? x : Math.random()*innerWidth;
+    this.y = burst ? y : -30-Math.random()*innerHeight;
+    this.size = 6+Math.random()*11;
+    this.vx = burst ? (Math.random()-.5)*7 : (Math.random()-.5)*.75;
+    this.vy = burst ? -2-Math.random()*4 : .55+Math.random()*1.25;
     this.rot = Math.random()*Math.PI*2;
-    this.rotV = (Math.random()-0.5)*0.04;
-    this.size = 5+Math.random()*9;
-    this.alpha = 0.55+Math.random()*0.4;
-    this.hue = 345+Math.random()*22;
-    this.wobble = Math.random()*Math.PI*2;
-    this.wobbleS = 0.012+Math.random()*0.018;
-    this.swayAmp = 0.5+Math.random()*1.2;
+    this.rs = (Math.random()-.5)*.055;
     this.sway = Math.random()*Math.PI*2;
-    this.swayS = 0.008+Math.random()*0.012;
+    this.swaySpeed = .012+Math.random()*.02;
+    this.alpha = .58+Math.random()*.38;
+    this.life = 1;
+    this.decay = burst ? .014 : 0;
+    this.color = this.colors[Math.floor(Math.random()*this.colors.length)];
   }
-  tick(){
-    this.wobble += this.wobbleS;
-    this.sway += this.swayS;
-    this.x += this.vx + Math.sin(this.wobble)*this.swayAmp;
-    this.y += this.vy + Math.sin(this.sway)*0.2;
-    this.rot += this.rotV;
-    if(this.y > opCanvas.height+30) this.reset();
+  update(){
+    this.sway += this.swaySpeed;
+    this.x += this.vx + Math.sin(this.sway)*.9;
+    this.y += this.vy;
+    this.rot += this.rs;
+    if(this.decay){this.life -= this.decay; this.vy += .05}
+    if(!this.decay && this.y > innerHeight + 40) this.reset();
   }
-  draw(){ drawPetal(opCtx, this.x, this.y, this.size, this.rot, this.hue, this.alpha); }
+  draw(ctx){drawPetal(ctx,this.x,this.y,this.size,this.rot,this.color,this.alpha*this.life)}
 }
 
-const opPetals = Array.from({length:70}, () => new SakuraPetal(true));
-let opAnimating = true;
-
+const opCanvas = document.getElementById("op-canvas");
+let opCtx = resizeCanvas(opCanvas);
+let opPetals = Array.from({length:72},()=>new Petal(opCanvas));
 function opLoop(){
-  if(!opAnimating) return;
-  opCtx.clearRect(0,0,opCanvas.width,opCanvas.height);
-  opPetals.forEach(p=>{ p.tick(); p.draw(); });
-  requestAnimationFrame(opLoop);
+  opCtx.clearRect(0,0,innerWidth,innerHeight);
+  opPetals.forEach(p=>{p.update();p.draw(opCtx)});
+  if(!prefersReduced) requestAnimationFrame(opLoop);
 }
 opLoop();
 
-// Click burst on opening page
-document.getElementById('opening-page').addEventListener('click', e => {
-  if(e.target.closest('#opEnterBtn')) return;
-  for(let i=0;i<12;i++){
-    const bp = new SakuraPetal();
-    bp.x = e.clientX+(Math.random()-0.5)*20;
-    bp.y = e.clientY+(Math.random()-0.5)*20;
-    bp.vy = -1-Math.random()*3;
-    bp.vx = (Math.random()-0.5)*3;
-    bp.size = 6+Math.random()*7;
-    bp.alpha = 0.8;
-    opPetals.push(bp);
-    setTimeout(()=>{ const idx=opPetals.indexOf(bp); if(idx>-1) opPetals.splice(idx,1); }, 2800);
-  }
+window.addEventListener("resize",()=>{
+  opCtx = resizeCanvas(opCanvas);
+  if(document.getElementById("sakura-canvas")) mainCtx = resizeCanvas(document.getElementById("sakura-canvas"));
+  if(document.getElementById("ninja-canvas")) ninjaCtx = resizeCanvas(document.getElementById("ninja-canvas"));
 });
 
-/* ── ENTER BUTTON TRANSITION ── */
-document.getElementById('opEnterBtn').addEventListener('click', () => {
-  const overlay = document.getElementById('opTOverlay');
-  const tc = document.getElementById('op-t-canvas');
-  tc.width = innerWidth; tc.height = innerHeight;
-  const tctx = tc.getContext('2d');
+const cursor = document.getElementById("shuriken-cursor");
+const aura = document.getElementById("cursor-aura");
+let mx = innerWidth/2, my = innerHeight/2, sx = mx, sy = my, ax = mx, ay = my, angle = 0, hover = false;
+const trails = Array.from({length:11},(_,i)=>{
+  const el = document.createElement("span");
+  el.className = "cursor-trail";
+  document.body.appendChild(el);
+  return {el,x:mx,y:my,size:Math.max(2,7-i*.55)};
+});
+document.addEventListener("mousemove",e=>{mx=e.clientX;my=e.clientY});
+document.addEventListener("mousedown",()=>cursor.classList.add("clicked"));
+document.addEventListener("mouseup",()=>cursor.classList.remove("clicked"));
+function bindHover(){
+  document.querySelectorAll("a,button,input,.card,.culture-item").forEach(el=>{
+    el.addEventListener("mouseenter",()=>{hover=true;aura.classList.add("hover")});
+    el.addEventListener("mouseleave",()=>{hover=false;aura.classList.remove("hover")});
+  });
+}
+bindHover();
+function cursorLoop(){
+  sx += (mx-sx)*.2; sy += (my-sy)*.2;
+  ax += (mx-ax)*.09; ay += (my-ay)*.09;
+  angle += hover ? 6.2 : 2.5;
+  cursor.style.left = sx+"px"; cursor.style.top = sy+"px";
+  cursor.style.transform = `translate(-50%,-50%) rotate(${angle}deg)`;
+  aura.style.left = ax+"px"; aura.style.top = ay+"px";
+  trails.unshift({el:trails.pop().el,x:sx,y:sy,size:7});
+  trails.forEach((t,i)=>{
+    const size = Math.max(1.5,7-i*.55);
+    t.el.style.left = t.x+"px"; t.el.style.top = t.y+"px";
+    t.el.style.width = size+"px"; t.el.style.height = size+"px";
+    t.el.style.opacity = ((1-i/trails.length)*.42).toFixed(2);
+  });
+  requestAnimationFrame(cursorLoop);
+}
+cursorLoop();
 
-  overlay.classList.add('go');
+const ninja = document.getElementById("ninja-welcome");
+const ninjaCanvas = document.getElementById("ninja-canvas");
+let ninjaCtx = resizeCanvas(ninjaCanvas);
+let ninjaPetals = [];
+function ninjaLoop(until){
+  ninjaCtx.clearRect(0,0,innerWidth,innerHeight);
+  ninjaCtx.fillStyle = "rgba(255,240,244,.08)";
+  ninjaCtx.fillRect(0,innerHeight*.66,innerWidth,2);
+  ninjaPetals.forEach(p=>{p.update();p.draw(ninjaCtx)});
+  ninjaPetals = ninjaPetals.filter(p=>p.life>.02 && p.y<innerHeight+60);
+  if(performance.now()<until) requestAnimationFrame(()=>ninjaLoop(until));
+}
 
-  const burstPetals = [];
-  for(let i=0;i<120;i++){
-    burstPetals.push({
-      x: Math.random()*tc.width,
-      y: Math.random()*tc.height*1.5 - tc.height*0.3,
-      vy: 1+Math.random()*2.5,
-      vx: (Math.random()-0.5)*1.2,
-      rot: Math.random()*Math.PI*2,
-      rotV: (Math.random()-0.5)*0.06,
-      size: 6+Math.random()*10,
-      alpha: 0.7+Math.random()*0.3,
-      hue: 345+Math.random()*22,
-      wobble: Math.random()*Math.PI*2,
-      wobbleS: 0.018+Math.random()*0.025,
-      swayAmp: 0.8+Math.random()*1.5,
-    });
-  }
-
-  const fillCanvas = document.createElement('canvas');
-  fillCanvas.width = tc.width; fillCanvas.height = tc.height;
-  fillCanvas.style.cssText = 'position:absolute;inset:0;z-index:0;';
-  overlay.insertBefore(fillCanvas, overlay.firstChild);
-  const fctx = fillCanvas.getContext('2d');
-
-  let frame=0;
-  function tLoop(){
-    frame++;
-    const fillAlpha = Math.min(frame/55, 1);
-    fctx.clearRect(0,0,fillCanvas.width,fillCanvas.height);
-    fctx.fillStyle = `rgba(232,160,176,${fillAlpha*0.92})`;
-    fctx.fillRect(0,0,fillCanvas.width,fillCanvas.height);
-
-    tctx.clearRect(0,0,tc.width,tc.height);
-    burstPetals.forEach(p => {
-      p.wobble += p.wobbleS;
-      p.x += p.vx + Math.sin(p.wobble)*p.swayAmp;
-      p.y += p.vy;
-      p.rot += p.rotV;
-      drawPetal(tctx, p.x, p.y, p.size, p.rot, p.hue, p.alpha);
-    });
-
-    if(frame < 95) requestAnimationFrame(tLoop);
-    else revealMainSite();
-  }
-  tLoop();
+document.getElementById("opEnterBtn").addEventListener("click",()=>{
+  ninja.classList.add("active");
+  ninja.setAttribute("aria-hidden","false");
+  ninjaPetals = Array.from({length:120},()=>new Petal(ninjaCanvas,true,Math.random()*innerWidth,Math.random()*innerHeight*.35));
+  ninjaPetals.forEach(p=>{p.vy=1+Math.random()*1.8;p.vx=(Math.random()-.5)*1.5;p.decay=.003;p.life=1});
+  ninjaLoop(performance.now()+3900);
+  setTimeout(()=>{
+    document.getElementById("opening-page").classList.add("fade-out");
+    document.getElementById("main-site").classList.add("visible");
+    startMain();
+  },1550);
+  setTimeout(()=>ninja.classList.add("leave"),3350);
+  setTimeout(()=>{
+    ninja.remove();
+    const opening = document.getElementById("opening-page");
+    if(opening) opening.remove();
+  },4300);
 });
 
-function revealMainSite(){
-  opAnimating = false;
-  const opening = document.getElementById('opening-page');
-  opening.classList.add('fade-out');
-
-  const main = document.getElementById('main-site');
-  main.style.display = 'block';
-  setTimeout(() => {
-    main.style.opacity = '1';
-    opening.addEventListener('animationend', () => opening.remove());
-    initMainSite();
-  }, 200);
+let mainCtx;
+let mainPetals = [];
+function startMain(){
+  const canvas = document.getElementById("sakura-canvas");
+  if(!mainCtx){
+    mainCtx = resizeCanvas(canvas);
+    mainPetals = Array.from({length:44},()=>new Petal(canvas));
+    mainPetals.forEach(p=>p.y=Math.random()*innerHeight);
+    mainLoop();
+  }
+  document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
 }
-
-/* ══════════════════════════════════════════
-   MAIN SITE — CURSOR
-══════════════════════════════════════════ */
-function initMainSite(){
-  /* ── SHURIKEN CURSOR ── */
-  const shurikenEl = document.getElementById('shuriken-cursor');
-  const auraEl = document.getElementById('cursor-aura');
-
-  let mx=0, my=0;
-  let angle=0;
-  // Trail dots pool
-  const TRAIL_COUNT = 10;
-  const trails = [];
-  for(let i=0;i<TRAIL_COUNT;i++){
-    const t = document.createElement('div');
-    t.className = 'cursor-trail';
-    const s = Math.max(2, 7 - i*0.6);
-    t.style.cssText = `width:${s}px;height:${s}px;opacity:0;`;
-    document.body.appendChild(t);
-    trails.push({el:t, x:0, y:0, op:0});
-  }
-  // Trail history positions
-  const trailPos = Array(TRAIL_COUNT).fill(null).map(()=>({x:0,y:0}));
-
-  document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
-
-  // Hover detect — speed up spin on links/buttons
-  let isHovering=false;
-  document.querySelectorAll('a,button,.cat-card,.article-card,.culture-item').forEach(el=>{
-    el.addEventListener('mouseenter',()=>{ isHovering=true; auraEl.classList.add('hover'); });
-    el.addEventListener('mouseleave',()=>{ isHovering=false; auraEl.classList.remove('hover'); });
-  });
-
-  // Click flash
-  document.addEventListener('mousedown',()=>shurikenEl.classList.add('clicked'));
-  document.addEventListener('mouseup',  ()=>shurikenEl.classList.remove('clicked'));
-
-  // Smooth follow vars
-  let sx=mx, sy=my;       // shuriken smooth pos
-  let ax=mx, ay=my;       // aura smooth pos (slower)
-
-  (function shurikenLoop(){
-    // Smooth follow
-    sx += (mx-sx)*0.18;
-    sy += (my-sy)*0.18;
-    ax += (mx-ax)*0.09;
-    ay += (my-ay)*0.09;
-
-    // Spin — faster when hovering or moving fast
-    const speed = isHovering ? 5.5 : 2.2;
-    angle += speed;
-
-    shurikenEl.style.left = sx+'px';
-    shurikenEl.style.top  = sy+'px';
-    shurikenEl.style.transform = `translate(-50%,-50%) rotate(${angle}deg)`;
-
-    auraEl.style.left = ax+'px';
-    auraEl.style.top  = ay+'px';
-
-    // Shift trail positions
-    for(let i=TRAIL_COUNT-1;i>0;i--){
-      trailPos[i].x = trailPos[i-1].x;
-      trailPos[i].y = trailPos[i-1].y;
-    }
-    trailPos[0].x = sx; trailPos[0].y = sy;
-
-    // Draw trails
-    for(let i=0;i<TRAIL_COUNT;i++){
-      const t = trails[i].el;
-      const op = (1 - i/TRAIL_COUNT) * 0.45;
-      const sz = Math.max(1.5, 6 - i*0.5);
-      t.style.left = trailPos[i].x+'px';
-      t.style.top  = trailPos[i].y+'px';
-      t.style.opacity = op;
-      t.style.width  = sz+'px';
-      t.style.height = sz+'px';
-    }
-
-    requestAnimationFrame(shurikenLoop);
-  })();
-
-  /* ── MOBILE MENU ── */
-  document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileMenu').classList.add('open'));
-  document.getElementById('mobileClose').addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open'));
-
-  /* ── SAKURA CANVAS ── */
-  const canvas = document.getElementById('sakura-canvas');
-  const ctx = canvas.getContext('2d');
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  window.addEventListener('resize', () => { canvas.width=window.innerWidth; canvas.height=window.innerHeight; });
-  const PC = ['#f9c8d4','#f4a7b9','#fde8f0','#f8bbd0','#e8728a','#ffcdd2'];
-
-  class MPetal{
-    constructor(fc,x,y){
-      this.fc=fc||false; this.x=x||Math.random()*canvas.width;
-      this.y=fc?y:-20; this.size=6+Math.random()*10;
-      this.vy=fc?-(2+Math.random()*4):0.8+Math.random()*2;
-      this.vx=(Math.random()-0.5)*2; this.rot=Math.random()*Math.PI*2;
-      this.rs=(Math.random()-0.5)*0.06; this.op=fc?1:0.7+Math.random()*0.3;
-      this.col=PC[Math.floor(Math.random()*PC.length)];
-      this.sw=Math.random()*Math.PI*2; this.sws=0.02+Math.random()*0.02;
-      this.life=1; this.dec=fc?0.015:0.003;
-    }
-    update(){
-      this.sw+=this.sws; this.x+=this.vx+Math.sin(this.sw)*0.8;
-      this.y+=this.vy; this.rot+=this.rs; this.life-=this.dec;
-      if(this.fc) this.vy+=0.08;
-    }
-    draw(){
-      ctx.save(); ctx.translate(this.x,this.y); ctx.rotate(this.rot);
-      ctx.globalAlpha=this.op*this.life; ctx.fillStyle=this.col;
-      ctx.beginPath();
-      ctx.ellipse(0,-this.size/2,this.size*0.45,this.size*0.7,0,0,Math.PI*2);
-      ctx.fill();
-      ctx.fillStyle='rgba(255,255,255,0.3)';
-      ctx.beginPath();
-      ctx.ellipse(-this.size*0.1,-this.size*0.6,this.size*0.15,this.size*0.3,-0.3,0,Math.PI*2);
-      ctx.fill();
-      ctx.restore();
-    }
-  }
-
-  let petals = [];
-  for(let i=0;i<35;i++){ const p=new MPetal(); p.y=Math.random()*canvas.height; petals.push(p); }
-  setInterval(()=>{ if(petals.filter(p=>!p.fc).length<40) petals.push(new MPetal()); }, 400);
-
-  function animPetals(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    petals = petals.filter(p => p.life>0 && p.y<canvas.height+50);
-    petals.forEach(p=>{ p.update(); p.draw(); });
-    requestAnimationFrame(animPetals);
-  }
-  animPetals();
-
-  // click burst on main site
-  document.addEventListener('click', e => {
-    for(let i=0;i<18;i++){
-      const p=new MPetal(true,e.clientX+(Math.random()-0.5)*20,e.clientY);
-      p.vx=(Math.random()-0.5)*8; p.vy=-(2+Math.random()*6); p.size=8+Math.random()*12; petals.push(p);
-    }
-    let r=0, op=1;
-    (function rip(){
-      if(op<=0) return;
-      ctx.save();
-      ctx.beginPath(); ctx.arc(e.clientX,e.clientY,r,0,Math.PI*2);
-      ctx.strokeStyle=`rgba(232,114,138,${op})`; ctx.lineWidth=2; ctx.stroke();
-      ctx.restore();
-      r+=4; op-=0.04;
-      requestAnimationFrame(rip);
-    })();
-  });
-
-  /* ── SCROLL REVEAL ── */
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach((entry,i) => {
-      if(entry.isIntersecting){
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-          entry.target.style.transition='opacity 0.7s ease, transform 0.7s ease';
-        }, i%5*120);
-      }
-    });
-  }, {threshold:0.08});
-  document.querySelectorAll('.article-card,.latest-item,.fact-card,.featured-wrap').forEach(el=>obs.observe(el));
-
-  const hObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if(e.isIntersecting) e.target.style.cssText+='opacity:1;transform:translateY(0);transition:all 0.8s ease;';
-    });
-  }, {threshold:0.1});
-  document.querySelectorAll('.sec-title,.sec-label,.sec-jp').forEach(el => {
-    el.style.cssText='opacity:0;transform:translateY(20px);';
-    hObs.observe(el);
-  });
-
-  const catObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if(e.isIntersecting){
-        const cards = document.querySelectorAll('.cat-card');
-        cards.forEach((c,i) => setTimeout(() => {
-          c.style.cssText='opacity:1;transform:translateY(0);transition:all 0.5s ease;';
-        }, i*80));
-      }
-    });
-  }, {threshold:0.1});
-  const catGrid = document.querySelector('.cat-grid');
-  if(catGrid){
-    document.querySelectorAll('.cat-card').forEach(c=>{ c.style.cssText='opacity:0;transform:translateY(16px);'; });
-    catObs.observe(catGrid);
-  }
+function mainLoop(){
+  mainCtx.clearRect(0,0,innerWidth,innerHeight);
+  mainPetals.forEach(p=>{p.update();p.draw(mainCtx)});
+  requestAnimationFrame(mainLoop);
 }
+document.addEventListener("click",e=>{
+  const canvas = document.getElementById("sakura-canvas");
+  if(!mainCtx || !canvas) return;
+  for(let i=0;i<16;i++) mainPetals.push(new Petal(canvas,true,e.clientX,e.clientY));
+  setTimeout(()=>{mainPetals = mainPetals.filter(p=>!p.decay || p.life>.05)},1200);
+});
 
-/* ── closeMobile (global) ── */
-function closeMobile(){ document.getElementById('mobileMenu').classList.remove('open'); }
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:.12});
 </script>
 </body>
 </html>
